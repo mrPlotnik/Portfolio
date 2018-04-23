@@ -1,0 +1,68 @@
+
+
+/////////////////////////////////
+// Disigh
+/////////////////////////////////
+body
+	color: #222
+	input:focus:required:invalid, textarea:focus:required:invalid
+		color: red
+	input:required:valid, textarea:required:valid
+		color: green
+a
+	color: $accent
+
+section h3	
+	color: #888	
+
+.bg_light
+	background-color: #FAFAFA
+
+.bg_dark
+	background-color: #222
+	color: #fff
+
+.s_descr	
+	color: #888
+	&::after
+		background-color: #222
+
+/////////////////////////////////
+// Section 1. Header
+/////////////////////////////////
+.sitetitle
+	color: #fff	
+.content
+	color: #fff
+	h1		
+		background-color: rgba(254, 101, 74, 0.5)
+	p		
+		text-shadow: 0 0 15px lighten($accent, 20%)
+
+/////////////////////////////////
+// Section 2. About
+/////////////////////////////////
+.s_about p:nth-child(even) 		
+	color: #222
+
+/////////////////////////////////
+// Section 3. Resume
+/////////////////////////////////
+.i
+	color: $accent
+.resume_container
+	h3		
+	  color: #222	  	  
+	h4
+	  background-color: #FF6347
+	  color: #fff
+	.right
+		border-left: 1px solid lighten($accent, 25%)
+
+// Цитата
+blockquote 
+	border-top: 5px solid lighten($accent, 30%)
+	border-bottom: 5px solid lighten($accent, 30%)	
+	&:before
+		color: white
+		background: $accent
