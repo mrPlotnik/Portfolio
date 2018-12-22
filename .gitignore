@@ -1,12 +1,8 @@
 ﻿node_modules
 dist
 
-app/fonts 
+app/fonts
 app/libs
-
-
 
 debug.log
 package-lock.json
-
-

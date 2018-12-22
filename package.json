@@ -1,8 +1,7 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,14 +9,31 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.23.6",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-cache": "^1.0.2",
     "gulp-clean-css": "^3.9.3",
     "gulp-concat": "^2.6.1",
+    "gulp-css-scss": "^0.1.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.2.1",
-    "gulp-uglify": "^3.0.0"
+    "gulp-size": "^3.0.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "node-bourbon": "^4.2.8",
+    "vinyl-ftp": "^0.6.1"
+  },  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrPlotnik/Portfolio.git"
   },
-  "dependencies": {}
+  "bugs": {
+    "url": "https://github.com/mrPlotnik/Portfolio/issues"
+  },
+  "homepage": "https://github.com/mrPlotnik/Portfolio#readme",
+  "description": ""
 }
