@@ -4,27 +4,33 @@
 @media only screen and (max-height : 600px)	
 	padding-top: 20px
 
-/* Custom Media Queries */
 
 			
 
-/* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px)
-	// qwe
+// Большие девайсы (большие десктопы, < 1200px)
+@media (max-width: 1199.98px)
+	//menu
+	.top_mnu ul 
+		li
+			height: 70px
+		a
+			font-size: 1em		
 
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px)
+// Большие девайсы (десктопы, >= 992px)
+@media (max-width: 991.98px)
+	//header
 	.main_head		
-		.sitetitle
-			font-size: 16px
-			letter-spacing: 4px
+		p
+			font-size: 1.1em	
 
+	//
 	.personal_last_block
 		margin-top: 35px
+			
 
-
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px)
+// Средние девайсы («таблетки», >= 768px)
+@media (max-width: 767.98px)
+	//
 	.resume_container .left, .section_content .resume_container h3
 		text-align: left
 		margin-bottom: 10px
@@ -34,66 +40,45 @@
 			margin-bottom: 10px
 		.left h3
 			margin-top: 0
-			
-	.main_head
-		.mnu-line			
-			.sitetitle
-				font-size: 1em
-				letter-spacing: 3px
-				line-height: 30px
-				margin: 20px 0					
 
+// Малые девайсы («ландшафтные телефоны», >= 576px)
+@media (max-width: 575.98px)
+	//header
+	.main_head		
+		p
+			font-size: .9em			
+			letter-spacing: 1px
+		.mnu-line
+			height: 60px			
+			.logo_container
+				width: 60px		
 
-/* Extra Small Devices, Phones */
-@media only screen and (max-width: 480px)	
+	//
 	.main_footer
 		text-align: left
 		.social_wrap
 			float: left			
 			ul
-				padding-left: 0
+				padding-left: 0				
 
-	.main_head
-		.mnu-line
-			height: 60px
-			.logo_container
-				width: 60px					
-			.sitetitle
-				font-size: 0.75em
-				letter-spacing: 1px
-				line-height: 15px	
-				margin: 15px 0 
-				
-	
-
-/* Custom, iPhone Retina */
 @media only screen and (max-width: 320px)
-	.main_head
-		.mnu-line			
-			h1
-				margin: 30px 0	
-			.sitetitle
-				font-size: 12px
-				letter-spacing: 0px
-				
+	//menu
+	.toggle_mnu 
+		right: 0
+		top: 0
 
-/*==========  Mobile First Method  ========== */
-
-/* Custom, iPhone Retina */
-@media only screen and (min-width: 320px)
-	// qwe
-/* Extra Small Devices, Phones */
-@media only screen and (min-width: 480px)
-	// qwe
-/* Small Devices, Tablets */
-@media only screen and (min-width: 768px)
-	// qwe
-/* Medium Devices, Desktops */
-@media only screen and (min-width: 992px)
-	// qwe
-/* Large Devices, Wide Screens */
-@media only screen and (min-width: 1200px)
-	// qwe
+	//header
+	.main_head 
+		p
+			font-size: .85em
+			letter-spacing: 0							
+	
+	//resume
+	.resume_container 	 
+		.left, .right
+			img, h3
+				display: none	
+	
 
 @media only screen and (max-height : 500px)		
 	.main_head

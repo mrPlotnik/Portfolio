@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+html
+	head
+		meta(charset='UTF-8')
+		title Сайт-портфолио веб-разработчика
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='shortcut icon', href='img/favicon.png')
+
+		link(rel='stylesheet', href='css/main.min.css')
+	
+		link(rel='icon', href='img/logo32.png', sizes='32x32')
+		link(rel='icon', href='img/logo192.png', sizes='192x192')
+		link(rel='apple-touch-icon-precomposed', href='img/logo180.png')
+
+	body
+		//- Лоадер
+		.loader
+			.loader_inner
+
+		include includes/menu.pug
+		include includes/header.pug
+		include includes/about.pug
+		include includes/target.pug
+		include includes/resume.pug
+		include includes/books.pug
+		include includes/portfolio.pug
+		include includes/contscts.pug
+		include includes/footer.pug
+
+		script(src='js/scripts.min.js')
