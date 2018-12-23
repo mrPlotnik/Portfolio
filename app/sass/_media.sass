@@ -1,12 +1,5 @@
 /*======== Desktop First Method ======== */
 
-/* Custom Media Queries */
-@media only screen and (max-height : 600px)	
-	padding-top: 20px
-
-
-			
-
 // Большие девайсы (большие десктопы, < 1200px)
 @media (max-width: 1199.98px)
 	//menu
@@ -27,7 +20,6 @@
 	.personal_last_block
 		margin-top: 35px
 			
-
 // Средние девайсы («таблетки», >= 768px)
 @media (max-width: 767.98px)
 	//
@@ -53,6 +45,12 @@
 			.logo_container
 				width: 60px		
 
+	//resume
+	.resume_container 	 
+		.left, .right
+			img, h3
+				display: none
+				
 	//
 	.main_footer
 		text-align: left
@@ -61,7 +59,7 @@
 			ul
 				padding-left: 0				
 
-@media only screen and (max-width: 320px)
+@media (max-width: 320px)
 	//menu
 	.toggle_mnu 
 		right: 0
@@ -73,11 +71,7 @@
 			font-size: .85em
 			letter-spacing: 0							
 	
-	//resume
-	.resume_container 	 
-		.left, .right
-			img, h3
-				display: none	
+		
 	
 
 @media only screen and (max-height : 500px)		
