@@ -2,9 +2,10 @@ var
 	// Gulp
 	gulp 					= require('gulp'), // Подключаем Gulp
 	// Gulp plugins		 
+	plumber 			= require('gulp-plumber'); // Теперь ошибки в Pug не доставляют проблем:)
 	pug 					= require('gulp-pug'), // Подключаем Pug
 	sass 					= require('gulp-sass'), //Подключаем Sass пакет,
-	cssToScss 			= require('gulp-css-scss'),
+	cssToScss 		= require('gulp-css-scss'),
 	concat 				= require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов).
 	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 
 	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
@@ -54,6 +55,7 @@ gulp.task('copyFont', () => {
 //-------------------------------------------
 gulp.task('pug', () => {
 	return gulp.src('app/pug/*.pug')
+	.pipe(plumber())
 	.pipe(pug({pretty: true})) // Компилируем с индентами
 	.pipe(gulp.dest('dist/'))   
 	.pipe(reload({stream: true}))	// Reload
