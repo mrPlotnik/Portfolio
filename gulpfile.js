@@ -1,37 +1,52 @@
 var 
-		// Gulp
-		gulp 					= require('gulp'), // Подключаем Gulp
-		// Gulp plugins		 
-		pug 					= require('gulp-pug'), // Подключаем Pug
-		sass 					= require('gulp-sass'), //Подключаем Sass пакет,
-		cssScss 			= require('gulp-css-scss'),
-		concat 				= require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов).
-		uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 
-		rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
-		autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
-		csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
-		imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
-		filesize 			= require('gulp-size'), // Узнаем размер файла
-		gutil 				= require('gulp-util'),		
-		cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
-		// Utilities
-		ftp 					= require('vinyl-ftp'),
-		del           = require('del'), // Подключаем библиотеку для  удаления файлов и папок
-		browserSync		= require('browser-sync'), // Подключаем Browser Sync //
-		reload				= browserSync.reload; 
+	// Gulp
+	gulp 					= require('gulp'), // Подключаем Gulp
+	// Gulp plugins		 
+	pug 					= require('gulp-pug'), // Подключаем Pug
+	sass 					= require('gulp-sass'), //Подключаем Sass пакет,
+	cssToScss 			= require('gulp-css-scss'),
+	concat 				= require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов).
+	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 
+	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
+	autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
+	csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
+	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
+	filesize 			= require('gulp-size'), // Узнаем размер файла
+	gutil 				= require('gulp-util'),		
+	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
+	// Utilities
+	ftp 					= require('vinyl-ftp'),
+	del           = require('del'), // Подключаем библиотеку для  удаления файлов и папок
+	browserSync		= require('browser-sync'), // Подключаем Browser Sync //
+	reload				= browserSync.reload; 
 
+//-------------------------------------------	
+// Скопировать шрифты в директории dist
+// и преобразовать CSS в SCSS
+// Достаточно запустить одинраз
+//-------------------------------------------	
+gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
+	console.log('Done! You can work. All is ready :)');
+});
 
 //-------------------------------------------
 // Компилируем CSS в SCSS
 //-------------------------------------------		
-gulp.task('css-scss', () => {
-  return gulp.src([
-  	'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
-  	'app/libs/magnific-popup/dist/magnific-popup.css',
-  	'app/libs/animate.css/animate.min.css'
-  	])
-    .pipe(cssScss())
-    .pipe(gulp.dest('app/libs/css-scss'));
+gulp.task('cssToScss', () => {
+	return gulp.src([
+		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
+		'app/libs/magnific-popup/dist/magnific-popup.css',
+		'app/libs/animate.css/animate.min.css'
+		])
+	.pipe(cssToScss())
+	.pipe(gulp.dest('app/libs/cssToScss'));
+});
+//-------------------------------------------
+// Копируем шрифты
+//-------------------------------------------
+gulp.task('copyFont', () => {
+	return gulp.src('app/fonts/*')		
+	.pipe(gulp.dest('dist/fonts'));
 });
 
 //-------------------------------------------
@@ -50,7 +65,7 @@ gulp.task('pug', () => {
 // 2. Переименовываем, добавляем префиксы,
 // минифицируем
 //------------------------------------------
-gulp.task('sass',['css-scss'], () => { 	
+gulp.task('sass', () => { 	
 	return gulp.src('app/sass/**/*.sass')		
 		.pipe(sass({
 			outputStyle: 'expand', 
@@ -140,7 +155,12 @@ gulp.task('imagemin', () =>
 //----------------------------------------------
 // Очистка директории
 //----------------------------------------------
-gulp.task('removedist', () => { return del.sync('dist'); });
+gulp.task('removedist', () => {
+	return del.sync([
+		'dist/*',
+		'!dist/fonts'
+	]); 
+});
 
 //----------------------------------------------
 // По умолчанию (при запуске)
