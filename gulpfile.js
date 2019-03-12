@@ -4,7 +4,7 @@ var
 	// Gulp plugins		 
 	plumber 			= require('gulp-plumber'); // Теперь ошибки в Pug не доставляют проблем:)
 	pug 					= require('gulp-pug'), // Подключаем Pug
-	sass 					= require('gulp-sass'), //Подключаем Sass пакет,
+	sass 					= require('gulp-sass'), //Подключаем Sass
 	cssToScss 		= require('gulp-css-scss'),
 	concat 				= require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов).
 	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 

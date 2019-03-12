@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "Portfolio",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "",
   "license": "ISC",
   "homepage": "",
   "ignore": [
@@ -20,7 +20,5 @@
     "page-scroll-to-id": "*",
     "waypoints": "2.0.3",
     "parallax.js": "*"
-
   }
-
 }
