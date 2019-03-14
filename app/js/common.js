@@ -54,36 +54,7 @@ $(document).ready(function() {
 			scrollTop  : $("#about").offset().top
 		}, 800);
 	});
-
-	//------------------------------------------------------
-	// Section 1. Header. 
-	// Высота .main_head всегда равна высоте окна браузера.	
-	// При изменении размеров окна всегда идет перерасчет.
-	//------------------------------------------------------	
-	// function heightDetect() {
-	// 	var height = $(window).height();
-	// 	$("#main").css("height", height);		
-	// };
-		
-	//------------------------------------------------------
-	// Section 2. About. 
-	// Классу .person добавляется св-во line-height равное 
-	// высоте соседних блоков, для центрирования фото по
-	// вертикали.
-	// При изменении размеров окна всегда идет перерасчет.
-	//------------------------------------------------------	
-	// function heightDetect2() {
-	// 	var height_full = $(".div_height").css("height");		
-	// 	$("#about .person").css("line-height", height_full);	
-	// };
-
-	// heightDetect();	
-	// heightDetect2();
-	// $(window).resize(function() {
-		// heightDetect()
-	// 	heightDetect2();
-	// });	
-
+	
 	//-----------------------------------------------------
 	// magnificPopup
 	//-----------------------------------------------------
@@ -117,9 +88,7 @@ $(document).ready(function() {
 			$(".top_mnu").css("display", "table");
 			$(".top_mnu li a").addClass("fadeInUp animated");
 		};
-	});
-
-	
+	});	
 
 	$(".top_mnu ul a").mPageScroll2id();
 	$(".scroll2id").mPageScroll2id();
