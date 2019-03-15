@@ -1,5 +1,7 @@
+*
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0) // Отключаем цвет подсветки ссылки или любого кликабельного JavaScript элемента при касании
 body
-	color: $dflt-txt
+	color: $gray-700
 	input:focus:required:invalid, textarea:focus:required:invalid
 		color: red
 	input:required:valid, textarea:required:valid
@@ -7,22 +9,22 @@ body
 a
 	color: $accent
 /////////////////////////////////
-// Подзаголовок раздела
+// Подзаголовок раздела и линия
 /////////////////////////////////
 .s_descr
-	color: $gray
+	color: $gray-700
 	&::after
-		background-color: $lt-blk
+		background-color: $gray-700
 
 /////////////////////////////////
 // Цвет фона раздела
 /////////////////////////////////
 .bg_light
-	background-color: $lt-gray
+	background-color: $gray-100
 
 .bg_dark
-	background-color: $lt-blk
-	color: $wht
+	background-color: $gray-900
+	color: $gray-100
 
 /////////////////////////////////
 // Цитаты
@@ -30,19 +32,19 @@ a
 blockquote
 	border-left: 5px solid lighten($accent, 30%)		
 	&:before
-		color: $wht
+		color: $gray-100
 		background: $accent	
 
 /////////////////////////////////
 // Section 1. Header
 /////////////////////////////////
 header
-	color: $wht	
+	color: $gray-100	
 	.content	
 		p		
 			text-shadow: 0 0 15px lighten($accent, 20%)
 		a
-			color: $wht	
+			color: $gray-100	
 			h1		
 				background-color: rgba(254, 101, 74, .5)			
 				&:hover
@@ -54,9 +56,7 @@ header
 #about
 	h3
 		background-color: $accent
-		color: $wht
-	.div_about		
-			border-top: 1px solid lighten($accent, 25%)			
+		color: $gray-100	
 		
 /////////////////////////////////
 // Section 3. Target
@@ -64,10 +64,6 @@ header
 #target
 	h2
 		color: $accent
-	.s_descr	
-		color: $gray
-		&::after
-			background-color: $gray
 
 /////////////////////////////////
 // Section 4. Resume
@@ -75,7 +71,7 @@ header
 #resume
 	h4
 		background-color: $accent
-		color: $wht
+		color: $gray-100
 	.right
 		border-left: 1px solid lighten($accent, 25%)	
 
@@ -87,9 +83,30 @@ header
 // Section 6. Portfolio
 /////////////////////////////////
 #portfolio
-	.s_descr
-		&::after 
-		 background-color: $lt-gray
+	.card
+		background-color: $black	
+		.hovereffect
+			img				
+			&:hover				
+				.overlay
+					background-color: rgba(255, 100, 72, 0.3)	
+			.overlay
+				h2
+					background: rgba(0, 0, 0, 0.6)
+				.info												
+					&:hover
+						box-shadow: 0 0 5px $white			
+		.card-title
+			color: $accent	
+		.btn
+			color: $accent
+			border-color: $accent
+			background-color: inherit
+			&:hover
+				color: $gray-100
+				background-color: $accent
+
+			
 
 /////////////////////////////////
 // Section 8. Footer

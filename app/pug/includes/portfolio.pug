@@ -1,23 +1,25 @@
 section#portfolio.bg_dark
 	h2 Портфолио
 	.s_descr_wrap
-		.s_descr
-			| Мои работы 
+		.s_descr Мои работы
 	.container
 		.row
-			.col-6.col-lg-3
-				.item
-					a(href="#")
-						img(src="img/portfolio/agency.png", alt="agency")
-			.col-6.col-lg-3
-				.item
-					a(href="#")
-						img(src="img/portfolio/agency.png", alt="agency")
-			.col-6.col-lg-3
-				.item
-					a(href="#")
-						img(src="img/portfolio/agency.png", alt="agency")
-			.col-6.col-lg-3
-				.item
-					a(href="#")
-						img(src="img/portfolio/agency.png", alt="agency")
+			.col-12.col-sm-6.col-lg-4
+
+				.card
+
+					.hovereffect
+						img.card-img-top(src='img/portfolio/agency.png', alt='agency')
+						.overlay
+							h2 Hover effect 4
+							a.info(href="#") link here
+
+					.card-body
+						h5.card-title Кадровое агенство
+						p.card-text
+							| Some quick example text to build on the card title and make up the bulk of the card's content.
+						.d-flex.justify-content-between
+							button.btn(type='button') Перейти
+							button.btn(type='button') GitHub
+
+
