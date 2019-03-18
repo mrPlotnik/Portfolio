@@ -8,6 +8,7 @@ body
 		color: green
 a
 	color: $accent
+
 /////////////////////////////////
 // Подзаголовок раздела и линия
 /////////////////////////////////
@@ -39,16 +40,15 @@ blockquote
 // Section 1. Header
 /////////////////////////////////
 header
-	color: $gray-100	
-	.content	
-		p		
-			text-shadow: 0 0 15px lighten($accent, 20%)
-		a
-			color: $gray-100	
-			h1		
-				background-color: rgba(254, 101, 74, .5)			
-				&:hover
-					background-color: rgba(254, 101, 74, .7)
+	color: $gray-100
+	a
+		color: $gray-100
+		&:hover
+			color: $gray-100
+		h1		
+			background-color: rgba(254, 101, 74, .5)			
+			&:hover
+				background-color: rgba(254, 101, 74, .7)
 
 /////////////////////////////////
 // Section 2. about
