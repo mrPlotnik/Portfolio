@@ -15,8 +15,7 @@ $(document).ready(function() {
 		
 		//-----------------------------------------------------
 		//Animate CSS + WayPoints javaScript Plugin
-		//Example: $(".element").animated("zoomInUp", "zoomOutDown");
-		//Author URL: http://webdesign-master.ru	
+		//Example: $(".element").animated("zoomInUp", "zoomOutDown");		
 		//-----------------------------------------------------
 		(function($) {
 			$.fn.animated = function(inEffect, outEffect) {
@@ -40,10 +39,10 @@ $(document).ready(function() {
 			};
 		})(jQuery);
 		
-		$(".animation_1").animated("flipInY", "fadeOutDown");
+		$(".animation_1").animated("flipInY", "fadeOut");
 		$(".animation_2").animated("fadeInLeft", "fadeOutLeft");
 		$(".animation_3").animated("fadeInRight", "fadeOutRight");
-		$(".animation_4").animated("fadeInUp", "fadeOutDown");		
+		$(".animation_4").animated("fadeIn", "fadeOut");		
 	}); 
 
 	//-----------------------------------------------------
