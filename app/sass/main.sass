@@ -35,46 +35,39 @@ h1, h2, h3, h4, h5, h6
 	line-height: inherit
 	font-size: inherit
 	text-transform: uppercase
+	letter-spacing: .05em
 
+h3		
+	text-align: center
+	margin-bottom: 2em
+
+/////////////////////////////////
+// Начало каждой секции
+/////////////////////////////////
 section
-	padding: 60px 0 70px
+	padding: 4em 0 5em
 	overflow: hidden	
 	h2
 		text-align: center
-		font-size: 26px
-		
-		margin: 0 0 15px
-		letter-spacing: 1px		
-	h3		
-		text-align: center		
-		font-weight: 900
-		font-size: 1em
-		margin-top: 0
-		margin-bottom: 35px
-		font-weight: 900
-		letter-spacing: 1px
-
-/////////////////////////////////
-// Подзаголовок		
-/////////////////////////////////
-.s_descr_wrap
-	text-align: center
-	.s_descr
-		display: inline-block
-		text-transform: uppercase
-		font-size: 12px
-		position: relative
-		letter-spacing: 3px
-		margin-bottom: 85px
-		font-weight: 900
-		&::after
-			content: ""
-			height: 1px
-			left: 50%
-			margin-left: -75px
-			margin-top: 50px
-			position: absolute
-			width: 150px
+		font-size: 2em		
+		margin: 0 0 .7em	
+	.s_descr_wrap
+		text-align: center
+		.s_descr
+			display: inline-block
+			text-transform: uppercase
+			font-size: .8em
+			position: relative
+			letter-spacing: .2em
+			margin-bottom: 5em			
+			&::after
+				content: ""
+				height: 1px
+				left: 50%
+				margin-left: -75px
+				margin-top: 4em
+				position: absolute
+				width: 150px
 
 /////////////////////////////////
 // Цитаты
@@ -132,36 +125,34 @@ header
 		&:nth-child(3)
 			height: 40vh	
 			h1				
+				font-size: 2.5em
 				display: inline-block
 				padding: .5em 1em 				
 				line-height: 1.5em							
 				border-radius: 4px				
-				font-weight: 900
-				font-size: 2.5em		
-				+mt(.5s)
+				font-weight: 600
 		&:nth-child(4)
-			height: 15vh
+			height: 15vh	
 		&:nth-child(5)
-			height: 20vh	
-	p
-		font-size: 1.2em
-		letter-spacing: .1em
-		text-transform: uppercase			
-	
+			height: 20vh			
+		p
+			font-size: 1.5em
+			text-transform: uppercase
+			letter-spacing: .05em
 
 /////////////////////////////////
 // Section 2. About
 /////////////////////////////////
 #about
-	.person
-		text-align: center
-		margin: 35px
+	.person	
+		// text-align: center
+		margin: 2em
 	h3
-		margin: 30px 0 20px
+		margin: 1em 0 1em
 		font-size: .9em		
 		font-style: italic
 	p	
-		margin-bottom: 10px
+		margin-bottom: .3em
 
 /////////////////////////////////
 // Section 3. Target
@@ -175,10 +166,11 @@ header
 // Section 4. Resume
 /////////////////////////////////
 #resume
+	line-height: 1.5em
 	.left
 		text-align: right
 		img
-			margin-right: 10px
+			margin-right: .5em
 		h3
 			text-align: right
 	.right
@@ -186,23 +178,23 @@ header
 		h3
 			text-align: left
 	.resume_icon		
-		margin-bottom: 35px
+		margin-bottom: 2.5em
 		img
 			width: 40px		
 	.resume_item
-		margin-bottom: 40px	
+		margin-bottom: 2em	
 		.icons-img
 			width: auto
-			height: 20px
+			height: 1em
 			margin-top: -1px
 		h4 
 			font-weight: normal
 			font-style: italic
 			display: inline-block
-			padding: 0 15px
-			margin-bottom: 15px
+			padding: 0 1em
+			margin-bottom: 1em
 		p
-			margin-top: 10px
+			margin: .3em 0 0
 
 /////////////////////////////////
 // Section 5. Books
@@ -248,14 +240,14 @@ header
 			top: 0
 			left: 0
 			h2				
-				padding: 10px				
+				padding: 1em				
 			.info
 				display: inline-block	
-				padding: 7px 14px
+				padding: .5em 1em
 				border: 1px solid #fff
-				margin: 50px 0 0 0				
+				margin: 7em 0 0 0				
 				&:hover
-					box-shadow: 0 0 5px #fff	
+					box-shadow: 0 0 .2em #fff	
 
 	.hovereffect a.info, .hovereffect h2 
 		font-size: 0.8em		
@@ -272,23 +264,23 @@ header
 		transform: scale(1)
 
 	.card-body
-		padding: 1rem
+		padding: 1em
 		.card-title
-			font-weight: 600				
+			font-weight: 900				
 		.card-text
 			font-size: .8em
 		.btn
-			padding: .25rem	.5rem
+			padding: .25em	.5em
 
 /////////////////////////////////
 // Section 7. Contacts
 /////////////////////////////////
 #contacts	
 	.contact_box
-		margin-bottom: 1.5rem
+		margin-bottom: 1.5em
 		.div-icon
-			width: 32px			
-			margin-bottom: 0.5rem
+			width: 2em			
+			margin-bottom: .5em
 			img
 				width: 100%	
 		h3
