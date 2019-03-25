@@ -2,7 +2,7 @@ var
 	// Gulp
 	gulp 					= require('gulp'), // Подключаем Gulp
 	// Gulp plugins		 
-	plumber 			= require('gulp-plumber'); // Теперь ошибки в Pug не доставляют проблем:)
+	plumber 			= require('gulp-plumber'), // Теперь ошибки в Pug не доставляют проблем:)
 	pug 					= require('gulp-pug'), // Подключаем Pug
 	sass 					= require('gulp-sass'), //Подключаем Sass
 	cssToScss 		= require('gulp-css-scss'),
@@ -21,21 +21,11 @@ var
 	browserSync		= require('browser-sync'), // Подключаем Browser Sync //
 	reload				= browserSync.reload; 
 
-//-------------------------------------------	
-// Скопировать шрифты в директории dist
-// и преобразовать CSS в SCSS
-// Достаточно запустить один раз
-//-------------------------------------------	
-gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
-	console.log('Done! You can work. All is ready :)');
-});
-
 //-------------------------------------------
 // Компилируем CSS в SCSS
 //-------------------------------------------		
 gulp.task('cssToScss', () => {
-	return gulp.src([
-		'app/libs/bootstrap/dist/css/bootstrap-grid.min.css',
+	return gulp.src([		
 		'app/libs/magnific-popup/dist/magnific-popup.css',
 		'app/libs/animate.css/animate.min.css'
 		])
@@ -83,7 +73,7 @@ gulp.task('sass', () => {
 });
 
 //--------------------------------------------
-// Минимизируем наш common.js 
+// Минимизируем и конкатинируем .js 
 //--------------------------------------------
 gulp.task('js', () => {
 	return gulp.src([
@@ -119,21 +109,20 @@ gulp.task('browser-sync', () => {
 gulp.task( 'deploy', () => {
 
 	var conn = ftp.create( {
-		host:     '31.170.161.90',
+		host:     'files.000webhost.com',
 		port:     '21',
-		user:     'u517813358',
-		password: 'plotnik1992',
-		parallel: 10,
+		user:     'plotnik-webdev',
+		password: '', // Do not forget to delete
+		parallel: 100,
+		maxConnections: 5,
 		log:      gutil.log
 	} );
 
-	var globs = [
-	'dist/**'
-	];
+	var globs = [	'dist/**'	];
 
-	return gulp.src( globs, { base: '.', buffer: false } )
-		.pipe( conn.newer( 'public_html/portfolio' ) ) // only upload newer files
-		.pipe( conn.dest( 'public_html/portfolio' ) );
+	return gulp.src( globs, { base: 'dist', buffer: false } )
+		.pipe( conn.newer( 'public_html/' ) ) // only upload newer files
+		.pipe( conn.dest( 'public_html/' ) );
 } );       
 
 //----------------------------------------------
@@ -158,13 +147,18 @@ gulp.task('imagemin', () =>
 // Очистка директории
 //----------------------------------------------
 gulp.task('removedist', () => {
-	return del.sync([
-		'dist/*',
-		'!dist/fonts'
-	]); 
+	return del.sync([	'dist/*' ]); 
+});
+
+//-------------------------------------------	
+// Скопировать шрифты в директории dist
+// и преобразовать CSS в SCSS
+//-------------------------------------------	
+gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
+	console.log('Done!');
 });
 
 //----------------------------------------------
 // По умолчанию (при запуске)
 //----------------------------------------------
-gulp.task('default', ['removedist', 'imagemin', 'watch']);
+gulp.task('default', ['removedist','beforeTheStart', 'imagemin', 'watch']);
