@@ -88,15 +88,22 @@ header
 		background-color: $black	
 		.hovereffect
 			img				
-			&:hover				
+				+mt(.5s)
+			&:hover		
+				img	
+					filter: grayscale(0.5) blur(3px)			 
+					transform: scale(1.2)			
 				.overlay
-					background-color: rgba(255, 100, 72, 0.3)	
+					// background-color: rgba(255, 100, 72, 0.1)	
 			.overlay
 				h2
 					background: rgba(0, 0, 0, 0.6)
-				.info												
+				.info			
+					border: 1px solid #fff									
 					&:hover
-						box-shadow: 0 0 5px $white			
+						color: #fff
+						border: 1px solid $accent		
+						background-color: $accent
 		.card-title
 			color: $accent	
 		.btn
