@@ -82,6 +82,7 @@ gulp.task('js', () => {
 		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/libs/parallax.js/parallax.min.js',
 		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
+		'app/libs/jquery.stellar/jquery.stellar.min.js',
 		'app/js/common.js'
 		])		
 		.pipe(concat('scripts.min.js'))
