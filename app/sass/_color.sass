@@ -94,7 +94,7 @@ header
 					filter: grayscale(0.5) blur(3px)			 
 					transform: scale(1.2)			
 				.overlay
-					// background-color: rgba(255, 100, 72, 0.1)	
+					background-color: rgba(255, 100, 72, 0.1)	
 			.overlay
 				h2
 					background: rgba(0, 0, 0, 0.6)
@@ -109,15 +109,12 @@ header
 		.btn
 			color: $accent
 			border-color: $accent
-			background-color: inherit
+			background-color: inherit			
 			&:hover
-				color: $gray-100
 				background-color: $accent
-				a
-					&:hover
-						color: $gray-100
-
-			
+				a	
+					+mt(.5s)				
+					color: $gray-100			
 
 /////////////////////////////////
 // Section 8. Footer

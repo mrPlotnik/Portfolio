@@ -9,7 +9,7 @@ $(document).ready(function() {
 		// Header animation
 		$(".loader_inner").fadeOut();
 		$(".loader").delay(400).fadeOut("slow");
-		$(".logo-knot").addClass("flipInY animated").css("animation-delay", "1.5s")	;
+		$(".logo-container").addClass("flipInY animated").css("animation-delay", "1.5s")	;
 		$(".logo-text").addClass("fadeIn animated").css("animation-delay", "2s");
 		$(".content h1").addClass("fadeInDown animated").css("animation-delay", "0.5s");
 		$(".content p").addClass("fadeInUp animated").css("animation-delay", "1s");
