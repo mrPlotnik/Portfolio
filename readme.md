@@ -5,3 +5,6 @@ npm i --save-dev
 bower i --save-dev
 <br>
 gulp 
+
+NODE_ENV=production gulp
+NODE_ENV=development gulp

@@ -1,96 +1,74 @@
-var 
+let isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
+
+const 
 	// Gulp
 	gulp 					= require('gulp'), // Подключаем Gulp
+
 	// Gulp plugins		 
-	plumber 			= require('gulp-plumber'), // Теперь ошибки в Pug не доставляют проблем:)
 	pug 					= require('gulp-pug'), // Подключаем Pug
-	sass 					= require('gulp-sass'), //Подключаем Sass
-	cssToScss 		= require('gulp-css-scss'),
-	concat 				= require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов).
-	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 
-	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
+	plumber 			= require('gulp-plumber'), // Теперь ошибки в Pug не доставляют проблем:)
+
+	sourceMaps 		= require('gulp-sourcemaps'), // На этапе разработки оч полезно понять что откуда взялось
+
+	sass 					= require('gulp-sass'), // Подключаем Sass
+	cssToScss 		= require('gulp-css-scss'), // Компилируем для
 	autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
 	csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
+
+	concat 				= require('gulp-concat'), //конкатенация файлов
+	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов	
+
+	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 	
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
-	filesize 			= require('gulp-size'), // Узнаем размер файла
-	gutil 				= require('gulp-util'),		
-	cache         = require('gulp-cache'), // Подключаем библиотеку кеширования
-	// Utilities
+
+	gutil 				= require('gulp-util'),			
+	
+	gulpIf 				= require('gulp-if'),	
 	ftp 					= require('vinyl-ftp'),
 	del           = require('del'), // Подключаем библиотеку для  удаления файлов и папок
 	browserSync		= require('browser-sync'), // Подключаем Browser Sync //
 	reload				= browserSync.reload; 
 
 //-------------------------------------------
-// Компилируем CSS в SCSS
-//-------------------------------------------		
-gulp.task('cssToScss', () => {
-	return gulp.src([		
-		'app/libs/magnific-popup/dist/magnific-popup.css',
-		'app/libs/animate.css/animate.min.css'
-		])
-	.pipe(cssToScss())
-	.pipe(gulp.dest('app/libs/cssToScss'));
-});
+// https://habr.com/ru/post/259225/
+// Gulp.watch: ловим ошибки правильно
 //-------------------------------------------
-// Копируем шрифты
-//-------------------------------------------
-gulp.task('copyFont', () => {
-	return gulp.src('app/fonts/*')		
-	.pipe(gulp.dest('dist/fonts'));
-});
+function wrapPipe(taskFn) {
+  return function(done) {
+    var onSuccess = function() {
+      done();
+    };
+    var onError = function(err) {
+      done(err);
+    }
+    var outStream = taskFn(onSuccess, onError);
+    if(outStream && typeof outStream.on === 'function') {
+      outStream.on('end', onSuccess);
+    }
+  }
+}
 
-//-------------------------------------------
-// Компилируем Pug в HTML
-//-------------------------------------------
-gulp.task('pug', () => {
-	return gulp.src('app/pug/*.pug')
-	.pipe(plumber())
-	.pipe(pug({pretty: true})) // Компилируем с индентами
-	.pipe(gulp.dest('dist/'))   
-	.pipe(reload({stream: true}))	// Reload
-});
+//---------------------------------------------
+// Vynil-FTP. Деплой на сервер
+//---------------------------------------------
+gulp.task( 'deploy', () => {
 
-//------------------------------------------
-// Компилируем SASS в CSS
-// 1. Читаемый вариант
-// 2. Переименовываем, добавляем префиксы,
-// минифицируем
-//------------------------------------------
-gulp.task('sass', () => { 	
-	return gulp.src('app/sass/**/*.sass')		
-		.pipe(sass({
-			outputStyle: 'expand', 
-			includePaths: require('node-bourbon').includePaths
-		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
-		.pipe(autoprefixer(['last 15 versions'])) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
-		// .pipe(gulp.dist('dist/css'))		
-		.pipe(csso())	// Минимизируем	 		
-		.pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
-		.pipe(gulp.dest('dist/css'))
-		.pipe(filesize())			
-		.pipe(browserSync.stream()); // Inject	
-});
+	var conn = ftp.create( {
+		host:     'plotnik1992.myjino.ru',
+		// port:     '21',
+		user:     'plotnik1992',
+		password: '', // Do not forget to delete
+		parallel: 100,
+		maxConnections: 5,
+		log:      gutil.log
+	} );
 
-//--------------------------------------------
-// Минимизируем и конкатинируем .js 
-//--------------------------------------------
-gulp.task('js', () => {
-	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/waypoints/waypoints.min.js',
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
-		'app/libs/parallax.js/parallax.min.js',
-		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
-		'app/libs/jquery.stellar/jquery.stellar.min.js',
-		'app/js/common.js'
-		])		
-		.pipe(concat('scripts.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('dist/js'))
-		// .pipe(filesize())	
-		.pipe(reload({stream: true}));	// Reload
-});
+	var globs = [	'dist/**'	];
+
+	return gulp.src( globs, { base: 'dist', buffer: false } )		
+		.pipe(gulpIf(isDev, conn.dest( '/domains/plotnik1992.myjino.ru' )))
+		.pipe(gulpIf(!isDev, conn.dest( '/domains/plotnik-web.ru/' )))
+} );     
 
 //---------------------------------------------
 // Browser-Sync
@@ -104,62 +82,116 @@ gulp.task('browser-sync', () => {
 	});
 });
 
-//---------------------------------------------
-// Vynil-FTP. Деплой на сервер
-//---------------------------------------------
-gulp.task( 'deploy', () => {
+//--------------------------------------------
+// Минимизируем и конкатинируем .js 
+//--------------------------------------------
+gulp.task('js', () => {
+	return gulp.src([
+		'app/libs/jquery/dist/jquery.min.js',
+		'app/libs/waypoints/waypoints.min.js',
+		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',		
+		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
+		'app/libs/jquery.stellar/jquery.stellar.min.js',
+		'app/js/common.js'
+		])		
+		.pipe(concat('scripts.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('dist/js'))		
+		.pipe(reload({stream: true}));	// Reload
+});
 
-	var conn = ftp.create( {
-		host:     'files.000webhost.com',
-		port:     '21',
-		user:     'plotnik-webdev',
-		password: '', // Do not forget to delete
-		parallel: 100,
-		maxConnections: 5,
-		log:      gutil.log
-	} );
+//------------------------------------------
+// Компилируем SASS в CSS
+// 1. Читаемый вариант
+// 2. Переименовываем, добавляем префиксы,
+// минифицируем
+//------------------------------------------
+gulp.task('sass', () => { 	
+	return gulp.src('app/sass/**/*.sass')		
+		.pipe(gulpIf(isDev, sourceMaps.init()))
+		.pipe(sass({
+			outputStyle: 'expanded', 
+			includePaths: require('node-bourbon').includePaths
+		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
+		.pipe(gulpIf(isDev, sourceMaps.write()))
+		.pipe(gulpIf(!isDev, autoprefixer(['last 15 versions']))) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
+		.pipe(gulpIf(!isDev, csso())) // Минимизируем			
+		.pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
+		.pipe(gulp.dest('dist/css'))			
+		.pipe(browserSync.stream()); // Inject без перезагрузки
+});
 
-	var globs = [	'dist/**'	];
-
-	return gulp.src( globs, { base: 'dist', buffer: false } )
-		.pipe( conn.newer( 'public_html/' ) ) // only upload newer files
-		.pipe( conn.dest( 'public_html/' ) );
-} );       
+//-------------------------------------------
+// Компилируем Pug в HTML
+//-------------------------------------------
+gulp.task('pug', () => {
+	return gulp.src('app/pug/*.pug')
+	.pipe(plumber())
+	.pipe(pug({pretty: true})) // Компилируем с индентами
+	.pipe(gulp.dest('dist/'))   
+	.pipe(reload({stream: true}))	// Reload
+});
 
 //----------------------------------------------
 // Наблюдаем за изменениями, компилируем, перезагружаем
 //----------------------------------------------
-gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], () => {
-	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch('app/pug/**/*.pug', ['pug']);
-	gulp.watch('app/js/**/*.js', ['js']);
+gulp.task('watch', gulp.parallel('pug', 'sass', 'js'), () => {
+	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
+	gulp.watch('app/pug/**/*.pug', gulp.parallel('pug'));
+	gulp.watch('app/js/**/*.js', gulp.parallel('js'));
 });
 
 //----------------------------------------------
 // Оптимизация, минификация изображений
 //----------------------------------------------
 gulp.task('imagemin', () =>
-	gulp.src('app/img/**/*')	
-		.pipe(cache(imagemin()) // Cache Images
-		.pipe(gulp.dest('dist/img/'))
+	gulp.src('app/img/**/*')
+		.pipe(gulpIf(!isDev, imagemin({
+			optimizationLevel: 7,
+			progressive: true,
+			interlaced: true,
+			svgoPlugins: [{
+				removeUnknownsAndDefaults: false,
+				cleanupIDs: false,
+				removeViewBox: false
+			}]
+		}))
+		.pipe(gulp.dest('dist/img'))		
 ));
+//-------------------------------------------
+// Копируем шрифты
+//-------------------------------------------
+gulp.task('copyFont', () => {
+	return gulp.src('app/fonts/*')		
+	.pipe(gulp.dest('dist/fonts'));
+});
+
+//-------------------------------------------
+// Компилируем CSS в SCSS
+//-------------------------------------------		
+gulp.task('cssToScss', () => {
+	return gulp.src([		
+		'app/libs/magnific-popup/dist/magnific-popup.css',
+		'app/libs/animate.css/animate.min.css'
+		])
+	.pipe(cssToScss())
+	.pipe(gulp.dest('app/libs/cssToScss'));
+});
+
+//-------------------------------------------	
+// Скопировать шрифты в директорию dist
+// и преобразовать CSS в SCSS
+//-------------------------------------------	
+gulp.task('beforeTheStart', gulp.parallel('cssToScss', 'copyFont', 'imagemin'));
 
 //----------------------------------------------
 // Очистка директории
 //----------------------------------------------
-gulp.task('removedist', () => {
-	return del.sync([	'dist/*' ]); 
-});
-
-//-------------------------------------------	
-// Скопировать шрифты в директории dist
-// и преобразовать CSS в SCSS
-//-------------------------------------------	
-gulp.task('beforeTheStart', ['cssToScss', 'copyFont'], () => {
-	console.log('Done!');
-});
+gulp.task('removedist', function() {
+	return del('dist/*')	
+})
 
 //----------------------------------------------
 // По умолчанию (при запуске)
 //----------------------------------------------
-gulp.task('default', ['removedist','beforeTheStart', 'imagemin', 'watch']);
+gulp.task('default', gulp.series('removedist', 'beforeTheStart', 'watch', 'browser-sync'));
