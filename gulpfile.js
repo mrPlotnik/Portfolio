@@ -57,7 +57,7 @@ gulp.task( 'deploy', () => {
 		host:     'plotnik1992.myjino.ru',
 		// port:     '21',
 		user:     'plotnik1992',
-		password: '', // Do not forget to delete
+		password: '08041992plotnik', // Do not forget to delete
 		parallel: 100,
 		maxConnections: 5,
 		log:      gutil.log
