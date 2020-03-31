@@ -1,17 +1,7 @@
 {
   "name": "Portfolio",
-  "description": "",
-  "main": "",
-  "license": "ISC",
-  "homepage": "",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "app/libs/",
-    "test",
-    "tests"
-  ],
+  "description": "", 
+  "license": "ISC",   
   "dependencies": {
     "animate.css": "3.5.2",
     "jquery": "2.*",

@@ -1,11 +1,8 @@
 {
-	"name": "project",
-	"version": "1.0.0",
-	"main": "gulpfile.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "",
+	"name": "portfolio",
+	"version": "2.0.0",
+	"main": "gulpfile.js",	
+	"author": "Plotnik",
 	"license": "ISC",
 	"devDependencies": {
 		"browser-sync": "^2.23.6",
@@ -36,6 +33,5 @@
 	"bugs": {
 		"url": "https://github.com/mrPlotnik/Portfolio/issues"
 	},
-	"homepage": "https://github.com/mrPlotnik/Portfolio#readme",
-	"description": ""
+	"homepage": "https://github.com/mrPlotnik/Portfolio#readme"
 }
