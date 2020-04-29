@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+		
+
 	$(window).stellar();
 
 	//-----------------------------------------------------
@@ -45,53 +47,75 @@ $(document).ready(function() {
 		$(".animation_2").animated("fadeInLeft", "fadeOutLeft");
 		$(".animation_3").animated("fadeInRight", "fadeOutRight");
 		$(".animation_4").animated("fadeIn", "fadeOut");		
-	}); 
 
-	//-----------------------------------------------------
-	// Header. Плавный скролл по клику на иконку мыши
-	//-----------------------------------------------------
-	$(".mouse-icon").click(function() {
-		$("html, body").animate({
-			scrollTop  : $("#about").offset().top
-		}, 800);
-	});
-	
-	//-----------------------------------------------------
-	// magnificPopup
-	//-----------------------------------------------------
-	$(".popup").magnificPopup({type:"image"});
-	$(".popup_content").magnificPopup({
-		type:"inline", //Можно опустить. По умолчанию всегда inline
-		midClick: true //Средняя кнопка
-	});
-	
-	//-----------------------------------------------------
-	// Меню сайта
-	//-----------------------------------------------------	
-	$(".toggle_mnu").click(function() {
-		$(".sandwich").toggleClass("active");
-	});
+		//-----------------------------------------------------
+		// Header. Плавный скролл по клику на иконку мыши
+		//-----------------------------------------------------
+		$(".mouse-icon").click(function() {
+			$("html, body").animate({
+				scrollTop  : $("#about").offset().top
+			}, 800);
+		});
+		
+		//-----------------------------------------------------
+		// magnificPopup
+		//-----------------------------------------------------
+		$(".popup").magnificPopup({type:"image"});
+		$(".popup_content").magnificPopup({
+			type:"inline", //Можно опустить. По умолчанию всегда inline
+			midClick: true //Средняя кнопка
+		});
+		
+		//-----------------------------------------------------
+		// Меню сайта
+		//-----------------------------------------------------	
+		$(".toggle_mnu").click(function() {
+			$(".sandwich").toggleClass("active");
+		});
 
-	$(".top_mnu ul a").click(function() {
-		$(".top_mnu").fadeOut(600);
-		$(".sandwich").toggleClass("active");
-		$(".top_text").css("opacity", "1");
-	});
-
-	$(".toggle_mnu").click(function() {
-		if ($(".top_mnu").is(":visible")) {
-			$(".top_text").css("opacity", "1");
+		$(".top_mnu ul a").click(function() {
 			$(".top_mnu").fadeOut(600);
-			$(".top_mnu li a").removeClass("fadeInUp animated");
-		} else {
-			$(".top_text").css("opacity", ".1");
-			$(".top_mnu").fadeIn(600);
-			$(".top_mnu").css("display", "table");
-			$(".top_mnu li a").addClass("fadeInUp animated");
-		};
-	});	
+			$(".sandwich").toggleClass("active");
+			$(".top_text").css("opacity", "1");
+		});
 
-	$(".top_mnu ul a").mPageScroll2id();
-	$(".scroll2id").mPageScroll2id();
+		$(".toggle_mnu").click(function() {
+			if ($(".top_mnu").is(":visible")) {
+				$(".top_text").css("opacity", "1");
+				$(".top_mnu").fadeOut(600);
+				$(".top_mnu li a").removeClass("fadeInUp animated");
+			} else {
+				$(".top_text").css("opacity", ".1");
+				$(".top_mnu").fadeIn(600);
+				$(".top_mnu").css("display", "table");
+				$(".top_mnu li a").addClass("fadeInUp animated");
+			};
+		});	
+
+		$(".top_mnu ul a").mPageScroll2id();
+		$(".scroll2id").mPageScroll2id();
+
+		//-----------------------------------------------------
+		//Все element одинаковой высоты	
+		//-----------------------------------------------------
+		function equalHeight(element){			
+			var maxHeight = 0;  // максимальная высота, первоначально 0				
+			element.each(function() { // цикл "для каждого из элементов"
+				if($(this).height() > maxHeight) { // если высота колонки больше значения максимальной высоты,
+					maxHeight = $(this).height();	// то она сама становится новой максимальной высотой				
+				}
+			});
+			$(element).height(maxHeight); // устанавливаем высоту каждой колонки равной значению максимальной высоты
+		};
+
+		var element = $(".card-body"); // Высоту чего будем выравнивать?			
+		equalHeight(element);	// Передаем функции нужные элементы	
+
+		$(window).resize(function	() { // пересчитываем значения при изменении размераокна браузера
+			element.css("height", "100%"); // Не забываем сбрасывать
+			equalHeight(element);
+		});
+
+	}); 
 
 });
