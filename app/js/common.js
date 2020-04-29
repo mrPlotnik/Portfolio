@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-		
-
 	$(window).stellar();
 
 	//-----------------------------------------------------
@@ -61,9 +59,17 @@ $(document).ready(function() {
 		// magnificPopup
 		//-----------------------------------------------------
 		$(".popup").magnificPopup({type:"image"});
-		$(".popup_content").magnificPopup({
-			type:"inline", //Можно опустить. По умолчанию всегда inline
-			midClick: true //Средняя кнопка
+		$(".popup").magnificPopup({
+			type:"image", //Можно опустить. По умолчанию всегда inline
+			// mainClass: 'mfp-with-zoom',
+			zoom: {
+		    enabled: true, // По умолчанию false, не забудь включить
+		    duration: 300, // Продолжительность эффекта в миллисекундах
+		    easing: 'ease-in-out', // CSS transition easing function
+		    // TФункция «opener» должна возвращать элемент, из которого будет увеличено всплывающее окно
+		    // и до которого всплывающее окно будет уменьшено
+		    // По умолчанию он ищет тег изображения:		    
+		  },			
 		});
 		
 		//-----------------------------------------------------
