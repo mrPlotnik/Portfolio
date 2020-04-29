@@ -13,17 +13,18 @@ a
 // Подзаголовок раздела и линия
 /////////////////////////////////
 .s_descr
-	color: $gray-700
+	color: $gray-600
 	&::after
-		background-color: $gray-700
+		background-color: $gray-600
 
 /////////////////////////////////
 // Цвет фона раздела
+// Переопределены стили Bootstrap
 /////////////////////////////////
-.bg_light
+.bg-light
 	background-color: $gray-100
 
-.bg_dark
+.bg-dark
 	background-color: $gray-900
 	color: $gray-100
 
@@ -46,7 +47,7 @@ header
 		&:hover
 			color: $gray-100
 		h1		
-			+mt(.5s)
+			+mt(.25s)
 			background-color: rgba(254, 101, 74, .5)			
 			&:hover
 				background-color: rgba(254, 101, 74, .7)
@@ -88,7 +89,7 @@ header
 		background-color: $black	
 		.hovereffect
 			img				
-				+mt(.5s)
+				+mt(.25s)
 			&:hover		
 				img	
 					filter: grayscale(0.5) blur(3px)			 
@@ -96,13 +97,13 @@ header
 				.overlay
 					background-color: rgba(255, 100, 72, 0.1)	
 			.overlay
-				h2
+				.bottom, .top
 					background: rgba(0, 0, 0, 0.6)
-				.info			
-					border: 1px solid #fff									
+				.info
+					background: rgba(0, 0, 0, 0.6)
+					color: #fff
+					+mt(.25s)								
 					&:hover
-						color: #fff
-						border: 1px solid $accent		
 						background-color: $accent
 		.card-title
 			color: $accent	
@@ -112,9 +113,7 @@ header
 			background-color: inherit			
 			&:hover
 				background-color: $accent
-				a	
-					+mt(.5s)				
-					color: $gray-100			
+				color: $gray-100	
 
 /////////////////////////////////
 // Section 8. Footer
