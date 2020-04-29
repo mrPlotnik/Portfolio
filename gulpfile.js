@@ -46,7 +46,7 @@ function wrapPipe(taskFn) {
       outStream.on('end', onSuccess);
     }
   }
-}
+};
 
 //---------------------------------------------
 // Vynil-FTP. Деплой на сервер
@@ -57,7 +57,7 @@ gulp.task( 'deploy', () => {
 		host:     'plotnik1992.myjino.ru',
 		// port:     '21',
 		user:     'plotnik1992',
-		password: '08041992plotnik', // Do not forget to delete
+		password: '', // Do not forget to delete
 		parallel: 100,
 		maxConnections: 5,
 		log:      gutil.log
@@ -68,7 +68,7 @@ gulp.task( 'deploy', () => {
 	return gulp.src( globs, { base: 'dist', buffer: false } )		
 		.pipe(gulpIf(isDev, conn.dest( '/domains/plotnik1992.myjino.ru' )))
 		.pipe(gulpIf(!isDev, conn.dest( '/domains/plotnik-web.ru/' )))
-} );     
+});     
 
 //---------------------------------------------
 // Browser-Sync
@@ -94,8 +94,10 @@ gulp.task('js', () => {
 		'app/libs/jquery.stellar/jquery.stellar.min.js',
 		'app/js/common.js'
 		])		
+		.pipe(gulpIf(isDev, sourceMaps.init()))
 		.pipe(concat('scripts.min.js'))
 		.pipe(uglify())
+		.pipe(gulpIf(isDev, sourceMaps.write()))
 		.pipe(gulp.dest('dist/js'))		
 		.pipe(reload({stream: true}));	// Reload
 });
@@ -135,7 +137,7 @@ gulp.task('pug', () => {
 //----------------------------------------------
 // Наблюдаем за изменениями, компилируем, перезагружаем
 //----------------------------------------------
-gulp.task('watch', gulp.parallel('pug', 'sass', 'js'), () => {
+gulp.task('watch', () => {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
 	gulp.watch('app/pug/**/*.pug', gulp.parallel('pug'));
 	gulp.watch('app/js/**/*.js', gulp.parallel('js'));
@@ -158,6 +160,7 @@ gulp.task('imagemin', () =>
 		}))
 		.pipe(gulp.dest('dist/img'))		
 ));
+
 //-------------------------------------------
 // Копируем шрифты
 //-------------------------------------------
@@ -178,20 +181,29 @@ gulp.task('cssToScss', () => {
 	.pipe(gulp.dest('app/libs/cssToScss'));
 });
 
-//-------------------------------------------	
-// Скопировать шрифты в директорию dist
-// и преобразовать CSS в SCSS
-//-------------------------------------------	
-gulp.task('beforeTheStart', gulp.parallel('cssToScss', 'copyFont', 'imagemin'));
-
 //----------------------------------------------
 // Очистка директории
 //----------------------------------------------
 gulp.task('removedist', function() {
 	return del('dist/*')	
-})
+});
+
+//-------------------------------------------	
+// Скопировать шрифты в директорию dist
+// и преобразовать CSS в SCSS
+//-------------------------------------------	
+gulp.task('beforeTheStart', 
+	gulp.series('removedist',
+		gulp.parallel('cssToScss', 'copyFont', 'imagemin'),
+		gulp.parallel('pug', 'sass', 'js')
+	)
+);
 
 //----------------------------------------------
 // По умолчанию (при запуске)
 //----------------------------------------------
-gulp.task('default', gulp.series('removedist', 'beforeTheStart', 'watch', 'browser-sync'));
+gulp.task('default', 
+	gulp.series('beforeTheStart',
+		gulp.parallel('browser-sync', 'watch')
+	)
+);
