@@ -1,34 +1,31 @@
-
 <!DOCTYPE html>
 
 html
 	head
 		meta(charset='UTF-8')
-		title Сайт-портфолио веб-разработчика
-		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		link(rel='shortcut icon', href='img/favicon.png')
-
-		link(rel='stylesheet', href='css/main.min.css')
-
 		link(rel='icon', href='img/logo32.png', sizes='32x32')
 		link(rel='icon', href='img/logo192.png', sizes='192x192')
 		link(rel='apple-touch-icon-precomposed', href='img/logo180.png')
-
+		link(rel='shortcut icon', href='img/favicon.png')
+		link(rel='stylesheet', href='css/main.min.css')
+		title Сайт-портфолио веб-разработчика
 	body
 		//- Лоадер
 		.loader
 			.loader_inner
 
-		include includes/menu.pug
-		include includes/1-header.pug
-		include includes/2-about.pug
-		include includes/3-target.pug
-		include includes/4-resume.pug
-		include includes/5-certificates.pug
-		include includes/6-books.pug
-		include includes/7-portfolio.pug
-		include includes/8-contacts.pug
-		include includes/9-footer.pug
+		header#header.header
+			include includes/1-header.pug
+		main#main.main
+			include includes/2-hero.pug
+			include includes/2-about.pug
+			include includes/3-target.pug
+			include includes/4-resume.pug
+			include includes/5-certificates.pug
+			include includes/6-books.pug
+			include includes/7-portfolio.pug
+			include includes/8-contacts.pug
+			include includes/9-footer.pug
 
 		script(src='js/scripts.min.js')

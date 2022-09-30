@@ -2,18 +2,18 @@ let isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 const 
 	// Gulp
-	gulp 					= require('gulp'), // Подключаем Gulp
+	gulp 				= require('gulp'), // Подключаем Gulp
 
 	// Gulp plugins		 
-	pug 					= require('gulp-pug'), // Подключаем Pug
+	pug 				= require('gulp-pug'), // Подключаем Pug
 	plumber 			= require('gulp-plumber'), // Теперь ошибки в Pug не доставляют проблем:)
 
-	sourceMaps 		= require('gulp-sourcemaps'), // На этапе разработки оч полезно понять что откуда взялось
+	sourceMaps 			= require('gulp-sourcemaps'), // На этапе разработки оч полезно понять что откуда взялось
 
-	sass 					= require('gulp-sass'), // Подключаем Sass
-	cssToScss 		= require('gulp-css-scss'), // Компилируем для
-	autoprefixer 	= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
-	csso 					= require('gulp-csso'), // Подключаем отличный CSS компрессор
+	sass = require('gulp-sass')(require('sass')), // Подключаем Sass
+	cssToScss 			= require('gulp-css-scss'), // Компилируем для
+	autoprefixer 		= require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
+	csso 				= require('gulp-csso'), // Подключаем отличный CSS компрессор
 
 	concat 				= require('gulp-concat'), //конкатенация файлов
 	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов	
@@ -24,9 +24,9 @@ const
 	gutil 				= require('gulp-util'),			
 	
 	gulpIf 				= require('gulp-if'),	
-	ftp 					= require('vinyl-ftp'),
-	del           = require('del'), // Подключаем библиотеку для  удаления файлов и папок
-	browserSync		= require('browser-sync'), // Подключаем Browser Sync //
+	ftp 				= require('vinyl-ftp'),
+	del           		= require('del'), // Подключаем библиотеку для  удаления файлов и папок
+	browserSync			= require('browser-sync'), // Подключаем Browser Sync //
 	reload				= browserSync.reload; 
 
 //-------------------------------------------
