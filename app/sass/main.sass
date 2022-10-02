@@ -1,10 +1,25 @@
-@import 'bourbon'     	// Миксины для SASS ("_font.sass")
-@import 'font'			// Шрифты. Бурбон
-@import "vars"			// Переменные проекта
-@import "libs"        	// Библиотеки
-@import "loader"		// Стили лоадера
-@import "color"			// Цвета
-@import "mouse-icon"  	// Стили иконки мыши в <header>
+@import "vars"				// Переменные проекта
+@import "libs"      	// Библиотеки
+@import "loader"			// Стили лоадера
+@import "mouse-icon"  // Стили иконки мыши в <header>
+
+@font-face
+	font-family: My-Font
+	font-style: normal
+	font-weight: 400
+	src: url("../fonts/RalewayRegular.woff") format("woff")
+
+@font-face
+	font-family: My-Font
+	font-style: normal
+	font-weight: 900
+	src: url("../fonts/RalewayBold.woff") format("woff")
+
+@font-face
+	font-family: My-Font
+	font-style: normal
+	font-weight: 100
+	src: url("../fonts/RalewayLight.woff") format("woff")
 
 // Отключение предупреждений бурбона в консоли
 *

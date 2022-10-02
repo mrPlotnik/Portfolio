@@ -1,10 +1,10 @@
 let isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
-const 
+const
 	// Gulp
 	gulp 				= require('gulp'), // Подключаем Gulp
 
-	// Gulp plugins		 
+	// Gulp plugins
 	pug 				= require('gulp-pug'), // Подключаем Pug
 	plumber 			= require('gulp-plumber'), // Теперь ошибки в Pug не доставляют проблем:)
 
@@ -16,18 +16,18 @@ const
 	csso 				= require('gulp-csso'), // Подключаем отличный CSS компрессор
 
 	concat 				= require('gulp-concat'), //конкатенация файлов
-	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов	
+	rename 				= require('gulp-rename'), // Подключаем библиотеку для переименования файлов
 
-	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js 	
+	uglify 				= require('gulp-uglify'), // Минимизируем наш common.js
 	imagemin 			= require('gulp-imagemin'), // Оптимизируем картинки
 
-	gutil 				= require('gulp-util'),			
-	
-	gulpIf 				= require('gulp-if'),	
+	gutil 				= require('gulp-util'),
+
+	gulpIf 				= require('gulp-if'),
 	ftp 				= require('vinyl-ftp'),
 	del           		= require('del'), // Подключаем библиотеку для  удаления файлов и папок
 	browserSync			= require('browser-sync'), // Подключаем Browser Sync //
-	reload				= browserSync.reload; 
+	reload				= browserSync.reload;
 
 //-------------------------------------------
 // https://habr.com/ru/post/259225/
@@ -65,15 +65,15 @@ gulp.task( 'deploy', () => {
 
 	var globs = [	'dist/**'	];
 
-	return gulp.src( globs, { base: 'dist', buffer: false } )		
+	return gulp.src( globs, { base: 'dist', buffer: false } )
 		.pipe(gulpIf(isDev, conn.dest( '/domains/plotnik1992.myjino.ru' )))
 		.pipe(gulpIf(!isDev, conn.dest( '/domains/plotnik-web.ru/' )))
-});     
+});
 
 //---------------------------------------------
 // Browser-Sync
 //---------------------------------------------
-gulp.task('browser-sync', () => { 
+gulp.task('browser-sync', () => {
 	browserSync({ // Выполняем browserSync
 		server: { // Определяем параметры сервера
 			baseDir: 'dist' // Директория для сервера - app
@@ -83,22 +83,22 @@ gulp.task('browser-sync', () => {
 });
 
 //--------------------------------------------
-// Минимизируем и конкатинируем .js 
+// Минимизируем и конкатинируем .js
 //--------------------------------------------
 gulp.task('js', () => {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/waypoints/waypoints.min.js',
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',		
+		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
 		'app/libs/jquery.stellar/jquery.stellar.min.js',
 		'app/js/common.js'
-		])		
+		])
 		.pipe(gulpIf(isDev, sourceMaps.init()))
 		.pipe(concat('scripts.min.js'))
 		.pipe(uglify())
 		.pipe(gulpIf(isDev, sourceMaps.write()))
-		.pipe(gulp.dest('dist/js'))		
+		.pipe(gulp.dest('dist/js'))
 		.pipe(reload({stream: true}));	// Reload
 });
 
@@ -108,18 +108,17 @@ gulp.task('js', () => {
 // 2. Переименовываем, добавляем префиксы,
 // минифицируем
 //------------------------------------------
-gulp.task('sass', () => { 	
-	return gulp.src('app/sass/**/*.sass')		
+gulp.task('sass', () => {
+	return gulp.src('app/sass/**/*.sass')
 		.pipe(gulpIf(isDev, sourceMaps.init()))
 		.pipe(sass({
-			outputStyle: 'expanded', 
-			includePaths: require('node-bourbon').includePaths
+			outputStyle: 'expanded',
 		}).on('error', sass.logError)) // Оповещение в случае ошибки при компиляции SASS в CSS
 		.pipe(gulpIf(isDev, sourceMaps.write()))
 		.pipe(gulpIf(!isDev, autoprefixer(['last 15 versions']))) // Добавление автопрефиксов, для одинакового отображения во всех браузерах (последнии 15 версий)
-		.pipe(gulpIf(!isDev, csso())) // Минимизируем			
+		.pipe(gulpIf(!isDev, csso())) // Минимизируем
 		.pipe(rename({suffix: '.min', prefix : ''})) // Добавление суффикса и префикса в название CSS файла
-		.pipe(gulp.dest('dist/css'))			
+		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream()); // Inject без перезагрузки
 });
 
@@ -130,7 +129,7 @@ gulp.task('pug', () => {
 	return gulp.src('app/pug/*.pug')
 	.pipe(plumber())
 	.pipe(pug({pretty: true})) // Компилируем с индентами
-	.pipe(gulp.dest('dist/'))   
+	.pipe(gulp.dest('dist/'))
 	.pipe(reload({stream: true}))	// Reload
 });
 
@@ -158,22 +157,22 @@ gulp.task('imagemin', () =>
 				removeViewBox: false
 			}]
 		}))
-		.pipe(gulp.dest('dist/img'))		
+		.pipe(gulp.dest('dist/img'))
 ));
 
 //-------------------------------------------
 // Копируем шрифты
 //-------------------------------------------
 gulp.task('copyFont', () => {
-	return gulp.src('app/fonts/*')		
+	return gulp.src('app/fonts/*')
 	.pipe(gulp.dest('dist/fonts'));
 });
 
 //-------------------------------------------
 // Компилируем CSS в SCSS
-//-------------------------------------------		
+//-------------------------------------------
 gulp.task('cssToScss', () => {
-	return gulp.src([		
+	return gulp.src([
 		'app/libs/magnific-popup/dist/magnific-popup.css',
 		'app/libs/animate.css/animate.min.css'
 		])
@@ -185,14 +184,14 @@ gulp.task('cssToScss', () => {
 // Очистка директории
 //----------------------------------------------
 gulp.task('removedist', function() {
-	return del('dist/*')	
+	return del('dist/*')
 });
 
-//-------------------------------------------	
+//-------------------------------------------
 // Скопировать шрифты в директорию dist
 // и преобразовать CSS в SCSS
-//-------------------------------------------	
-gulp.task('beforeTheStart', 
+//-------------------------------------------
+gulp.task('beforeTheStart',
 	gulp.series('removedist',
 		gulp.parallel('cssToScss', 'copyFont', 'imagemin'),
 		gulp.parallel('pug', 'sass', 'js')
@@ -202,7 +201,7 @@ gulp.task('beforeTheStart',
 //----------------------------------------------
 // По умолчанию (при запуске)
 //----------------------------------------------
-gulp.task('default', 
+gulp.task('default',
 	gulp.series('beforeTheStart',
 		gulp.parallel('browser-sync', 'watch')
 	)

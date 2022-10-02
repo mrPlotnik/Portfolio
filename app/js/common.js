@@ -3,14 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	const burger = document.querySelector('.burger');
 	const close = document.querySelector('.close');
 	const menu = document.querySelector('.menu');
-	const qwe = document.querySelectorAll('.menu a');
-	console.log(qwe);
+	const links = document.querySelectorAll('.menu a');
 
 	burger.addEventListener('click', function() {
 		body.classList.toggle('stop-scroll');
 		burger.setAttribute('aria-expanded', 'true');
 		menu.classList.toggle('menu--active');
-		qwe.forEach(function(el,) {
+		links.forEach(function(el,) {
 			el.classList.add('fadeInUp', 'animated');
 		})
 	})
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		body.classList.toggle('stop-scroll');
 		burger.setAttribute('aria-expanded', 'false');
 		menu.classList.toggle('menu--active');
-		qwe.forEach(function(el,) {
+		links.forEach(function(el,) {
 			el.classList.remove('fadeInUp', 'animated');
 		})
 	})
