@@ -8,41 +8,61 @@
 	font-style: normal
 	font-weight: 400
 	src: url("../fonts/RalewayRegular.woff") format("woff")
-
 @font-face
 	font-family: My-Font
 	font-style: normal
 	font-weight: 900
 	src: url("../fonts/RalewayBold.woff") format("woff")
-
 @font-face
 	font-family: My-Font
 	font-style: normal
 	font-weight: 100
 	src: url("../fonts/RalewayLight.woff") format("woff")
 
-// Отключение предупреждений бурбона в консоли
+:root
+	--header-height: 75px
+	--color-orange-hex: #ff6448
+	--color-orange-transparent-50: rgba(255, 100, 72,.5)
+	--color-orange-transparent-80: rgba(255, 100, 72,.2)
+	--color-bg-dark: #343a40
+	--color-text-light: #f8f9fa
+
 *
 	margin: 0
 	padding: 0
-	// text-decoration: none !important
-	// user-select: none // Пользователю запрещено выделять элемент
-	&:active, &:focus
-		outline: none
-
+	outline: 1px solid var(--color-orange-transparent-80)
+*, ::before, ::after
+	box-sizing: border-box
 body
 	font-family: $dflt-font
 	font-size: 16px
 	min-width: 320px
 	line-height: 1.5em
 	overflow-x: hidden
+div
+	display: flex
+img
+	width: 100%
+* >	svg
+	width: inherit
+	height: inherit
+a
+	display: inline-flex
+	// width: fit-content
+	text-decoration: none
+	color: inherit
 .stop-scroll
 	overflow: hidden
 .cont
 	width: 100%
-	max-width: 1660px
+	min-width: 320px
 	margin: 0 auto
 	padding: 0 15px
+.row
+	display: flex
+	flex-direction: column
+	padding-top: 50px
+	padding-bottom: 50px
 .list-reset
 	display: flex
 	margin: 0
@@ -53,62 +73,52 @@ body
 	border: none
 	cursor: pointer
 	background-color: transparent
-* >	svg
-	width: inherit
-	height: inherit
-a
-	display: inline-flex
-	// width: fit-content
-	text-decoration: none
-	color: inherit
+.section--dark
+	background-color: var(--color-bg-dark)
+.section__text-block
+	color: #000
+.section__text-block--white
+	color: var(--color-text-light)
+.section__text-block:not(:last-child)
+	margin-bottom: .5em
+.i
+	display: block
+	font-style: italic
 
-/////////////////////////////////
-// Секции, заголовки секций
-/////////////////////////////////
-h1, h2, h3, h4, h5, h6, p
-	margin: 0
-	padding: 0
+
+
+// Заголовки секций
 h1, h2, h3, h4, h5, h6
 	line-height: inherit
 	font-size: inherit
 	text-transform: uppercase
-h3
-	text-align: center
-	margin-bottom: 2em
+.section__header-wrap
+	flex-direction: column
+	align-items: center
+	position: relative
+	margin-bottom: 5em
+.section__header
+	margin-bottom: 5px
+	font-weight: 500
+	font-size: 2em
+	line-height: 1.5em
+	letter-spacing: .05em
+.section__subheader
+	font-size: .8em
+	letter-spacing: .15em
+	text-transform: uppercase
+	color: #6c757d
+.section__header-wrap::after
+	content: ''
+	position: absolute
+	width: 150px
+	height: 1px
+	bottom: -1.25em
+	background-color: #6c757d
+.section__header--orange
+	color: var(--color-orange-hex)
 
-
-
-/////////////////////////////////
-// Начало каждой секции
-/////////////////////////////////
-// section
-// 	padding: 4em 0 5em
-// 	overflow: hidden
-// 	h2
-// 		text-align: center
-// 		font-size: 2em
-// 		margin: 0 0 .7em
-// 	.s_descr_wrap
-// 		text-align: center
-// 		.s_descr
-// 			display: inline-block
-// 			text-transform: uppercase
-// 			font-size: .8em
-// 			position: relative
-// 			letter-spacing: .15em
-// 			margin-bottom: 5em
-// 			&::after
-// 				content: ""
-// 				height: 1px
-// 				left: 50%
-// 				margin-left: -75px
-// 				margin-top: 4em
-// 				position: absolute
-// 				width: 150px
-
-/////////////////////////////////
 // Цитаты
-/////////////////////////////////
 blockquote
 	position: relative
 	margin: 30px 0
@@ -131,16 +141,6 @@ blockquote
 		font-size: 3.25em
 		line-height: 1.5
 
-/////////////////////////////////
-// Курсив
-/////////////////////////////////
-.font-italic
-	display: inline-block
-	margin-right: 10px
-
-
-:root
-	--header-height: 75px
 
 
 // Header
@@ -152,9 +152,11 @@ blockquote
 	padding-top: 15px
 	z-index: 1
 .header__row
-	display: flex
+	flex-direction: row
 	justify-content: space-between
 	align-items: center
+	width: inherit
+	padding: 0
 .header__logo
 	width: calc( var(--header-height) / 1.5 )
 	height: calc( var(--header-height) / 1.5 )
@@ -170,6 +172,7 @@ blockquote
 @keyframes notransform
 	50%
 		transform: none
+
 // MENU
 .burger
 	display: flex
@@ -177,7 +180,7 @@ blockquote
 	align-items: center
 	width: calc(var(--header-height) / 1.5)
 	height: calc(var(--header-height) / 1.5)
-	background-color: $accent
+	background-color: var(--color-orange-hex)
 .burger__wrap
 	position: relative
 	width: calc(var(--header-height) / 3)
@@ -245,16 +248,11 @@ blockquote
 		animation-delay: 0.5s
 	&:nth-child(7) a
 		animation-delay: 0.6s
-
 .menu--active
 	opacity: 1
 	visibility: visible
 .menu--active a
 	opacity: 1
-
-
-
-
 
 // Hero
 .hero
@@ -266,9 +264,6 @@ blockquote
 .hero__cont
 	height: inherit
 .hero__row
-	display: flex
-	flex-direction: column
-	justify-content: space-between
 	align-items: center
 	height: 100%
 	padding-top: calc(var(--header-height) + 5em)
@@ -278,8 +273,7 @@ blockquote
 	width: 100%
 	height: 150px
 	top: calc(50% - 75px)
-	background-color: $accent
-	// z-index: 1
+	background-color: var(--color-orange-transparent-50)
 	a
 		justify-content: center
 		align-items: center
@@ -290,7 +284,6 @@ blockquote
 		line-height: 1.5
 		font-size: 2em
 		font-weight: 600
-
 .hero__descr
 	line-height: 1.5em
 	text-transform: uppercase
@@ -300,28 +293,37 @@ blockquote
 	margin-top: auto
 	margin-bottom: 2.5em
 
-
-
 // Section 2. About
-#about
-	.person
-		// text-align: center
-		margin: 2em
-	h3
-		margin: 1em 0 1em
-		font-size: .9em
-		font-style: italic
-	p
-		margin-bottom: .3em
-
+.about__img-wrap
+	display: flex
+	justify-content: center
+	margin-bottom: 2em
+	order: 1
+.about__first-block-wrap
+	display: flex
+	flex-direction: column
+	margin-bottom: 2em
+.about__second-block-wrap
+	display: flex
+	flex-direction: column
+	order: 3
+.person
+	width: 50%
+	text-align: center
+.about__header
+	margin-bottom: 1em
+	text-align: center
+	font-weight: 400
+	font-size: .9em
+	font-style: italic
+	color: #fff
+	background-color: var(--color-orange-hex)
 
 // Section 3. Target
-
-#target
-	p
-		font-weight: 100
-		text-align: center
-
+.target__content
+	display: flex
+	flex-direction: column
+	text-align: center
 
 // Section 4. Resume
 
