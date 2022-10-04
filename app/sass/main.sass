@@ -21,6 +21,8 @@
 
 :root
 	--header-height: 75px
+	--section-item-mb: 1.5em
+	--section-row-my: 2.5em
 	--color-orange-hex: #ff6448
 	--color-orange-transparent-50: rgba(255, 100, 72,.5)
 	--color-orange-transparent-80: rgba(255, 100, 72,.2)
@@ -53,16 +55,16 @@ a
 	color: inherit
 .stop-scroll
 	overflow: hidden
-.cont
+.section__container
 	width: 100%
 	min-width: 320px
 	margin: 0 auto
 	padding: 0 15px
-.row
+.section__row
 	display: flex
 	flex-direction: column
-	padding-top: 50px
-	padding-bottom: 50px
+	padding-top: var(--section-row-my)
+	padding-bottom: var(--section-row-my)
 .list-reset
 	display: flex
 	margin: 0
@@ -73,21 +75,11 @@ a
 	border: none
 	cursor: pointer
 	background-color: transparent
-.section--dark
-	background-color: var(--color-bg-dark)
-.section__text-block
-	color: #000
-.section__text-block--white
-	color: var(--color-text-light)
-.section__text-block:not(:last-child)
-	margin-bottom: .5em
 .i
 	display: block
 	font-style: italic
 
-
-
-// Заголовки секций
+// Glob
 h1, h2, h3, h4, h5, h6
 	line-height: inherit
 	font-size: inherit
@@ -96,7 +88,16 @@ h1, h2, h3, h4, h5, h6
 	flex-direction: column
 	align-items: center
 	position: relative
-	margin-bottom: 5em
+	margin-bottom: 4em
+.section__header-wrap::after
+	content: ''
+	position: absolute
+	width: 10em
+	height: 1px
+	bottom: -1.25em
+	background-color: #6c757d
+.section__header--orange
+	color: var(--color-orange-hex)
 .section__header
 	margin-bottom: 5px
 	font-weight: 500
@@ -108,15 +109,25 @@ h1, h2, h3, h4, h5, h6
 	letter-spacing: .15em
 	text-transform: uppercase
 	color: #6c757d
-.section__header-wrap::after
-	content: ''
-	position: absolute
-	width: 150px
-	height: 1px
-	bottom: -1.25em
-	background-color: #6c757d
-.section__header--orange
-	color: var(--color-orange-hex)
+.section__item
+	flex-direction: column
+	margin-bottom: var(--section-item-mb)
+.section__item-header
+	margin-bottom: 1em
+	text-align: center
+	font-weight: 400
+	font-size: .9em
+	font-style: italic
+	color: #fff
+	background-color: var(--color-orange-hex)
+.section--dark
+	background-color: var(--color-bg-dark)
+.section__text-block
+	color: #000
+.section__text-block--white
+	color: var(--color-text-light)
+.section__text-block:not(:last-child)
+	margin-bottom: .5em
 
 // Цитаты
 blockquote
@@ -140,8 +151,6 @@ blockquote
 		text-align: center
 		font-size: 3.25em
 		line-height: 1.5
-
-
 
 // Header
 .header
@@ -261,7 +270,7 @@ blockquote
 	text-align: center
 	background-image: url("../img/main_bg3.jpg")
 	background-size: cover
-.hero__cont
+.hero__container
 	height: inherit
 .hero__row
 	align-items: center
@@ -295,29 +304,16 @@ blockquote
 
 // Section 2. About
 .about__img-wrap
-	display: flex
 	justify-content: center
-	margin-bottom: 2em
 	order: 1
-.about__first-block-wrap
-	display: flex
-	flex-direction: column
-	margin-bottom: 2em
+	margin-bottom: var(--section-item-mb)
 .about__second-block-wrap
-	display: flex
-	flex-direction: column
 	order: 3
+	.section__item:last-child
+		margin-bottom: 0
 .person
 	width: 50%
 	text-align: center
-.about__header
-	margin-bottom: 1em
-	text-align: center
-	font-weight: 400
-	font-size: .9em
-	font-style: italic
-	color: #fff
-	background-color: var(--color-orange-hex)
 
 // Section 3. Target
 .target__content
@@ -326,37 +322,23 @@ blockquote
 	text-align: center
 
 // Section 4. Resume
+.resume__content
+	flex-direction: column
+.resume__first-block-wrap,
+.resume__second-block-wrap
+	flex-direction: column
+.resume__first-block-wrap h3,
+.resume__first-block-wrap .resume__icon,
+.resume__second-block-wrap h3,
+.resume__second-block-wrap .resume__icon
+	display: none
+.resume__second-block-wrap .section__item:last-child
+	margin-bottom: 0
 
-#resume
-	line-height: 1.5em
-	.left
-		text-align: right
-		img
-			margin-right: .5em
-		h3
-			text-align: right
-	.right
-		text-align: left
-		h3
-			text-align: left
-	.resume_icon
-		margin-bottom: 2.5em
-		img
-			width: 40px
-	.resume_item
-		margin-bottom: 2em
-		.icons-img
-			width: auto
-			height: 0.8em
-			margin: -3px 3px 0 2px
-		h4
-			font-weight: normal
-			font-style: italic
-			display: inline-block
-			padding: 0 1em
-			margin-bottom: 1em
-		p
-			margin: .3em 0 0
+
+
+
+
 
 /////////////////////////////////
 // Section 5. Books
