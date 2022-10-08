@@ -1,33 +1,8 @@
 @import "vars"				// Переменные проекта
+@import "font"				// Шрифт
 @import "libs"      	// Библиотеки
 @import "loader"			// Стили лоадера
 @import "mouse-icon"  // Стили иконки мыши в <header>
-
-@font-face
-	font-family: My-Font
-	font-style: normal
-	font-weight: 400
-	src: url("../fonts/RalewayRegular.woff") format("woff")
-@font-face
-	font-family: My-Font
-	font-style: normal
-	font-weight: 900
-	src: url("../fonts/RalewayBold.woff") format("woff")
-@font-face
-	font-family: My-Font
-	font-style: normal
-	font-weight: 100
-	src: url("../fonts/RalewayLight.woff") format("woff")
-
-:root
-	--header-height: 75px
-	--section-item-mb: 1.5em
-	--section-row-my: 2.5em
-	--color-orange-hex: #ff6448
-	--color-orange-transparent-50: rgba(255, 100, 72,.5)
-	--color-orange-transparent-80: rgba(255, 100, 72,.2)
-	--color-bg-dark: #343a40
-	--color-text-light: #f8f9fa
 
 *
 	margin: 0
@@ -41,7 +16,7 @@ body
 	min-width: 320px
 	line-height: 1.5em
 	overflow-x: hidden
-div
+div, a, img
 	display: flex
 img
 	width: 100%
@@ -49,29 +24,21 @@ img
 	width: inherit
 	height: inherit
 a
-	display: inline-flex
-	// width: fit-content
+	width: fit-content
 	text-decoration: none
-	color: inherit
+	color: var(--color-orange-hex)
+h1, h2, h3, h4, h5, h6
+	line-height: inherit
+	font-size: inherit
+	text-transform: uppercase
+.inline-link
+	display: inline-flex
 .stop-scroll
 	overflow: hidden
-.section__container
-	width: 100%
-	min-width: 320px
-	margin: 0 auto
-	padding: 0 15px
-.section__row
-	display: flex
-	flex-direction: column
-	padding-top: var(--section-row-my)
-	padding-bottom: var(--section-row-my)
 .list-reset
 	display: flex
-	margin: 0
-	padding: 0
 	list-style: none
 .btn-reset
-	padding: 0
 	border: none
 	cursor: pointer
 	background-color: transparent
@@ -80,14 +47,21 @@ a
 	font-style: italic
 
 // Glob
-h1, h2, h3, h4, h5, h6
-	line-height: inherit
-	font-size: inherit
-	text-transform: uppercase
+.section__container
+	width: 100%
+	min-width: 320px
+	margin: 0 auto
+	padding: 0 15px
+.section__row
+	flex-direction: column
+	width: 100%
+	padding-top: var(--section-row-my)
+	padding-bottom: var(--section-row-my)
 .section__header-wrap
+	position: relative
 	flex-direction: column
 	align-items: center
-	position: relative
+	text-align: center
 	margin-bottom: 4em
 .section__header-wrap::after
 	content: ''
@@ -109,14 +83,17 @@ h1, h2, h3, h4, h5, h6
 	letter-spacing: .15em
 	text-transform: uppercase
 	color: #6c757d
+.section__content
+	flex-direction: column
 .section__item
 	flex-direction: column
+	width: 100%
+.section__item:not(:last-child)
 	margin-bottom: var(--section-item-mb)
 .section__item-header
-	margin-bottom: 1em
+	margin-bottom: var(--section-item-header-mb)
 	text-align: center
 	font-weight: 400
-	font-size: .9em
 	font-style: italic
 	color: #fff
 	background-color: var(--color-orange-hex)
@@ -127,30 +104,7 @@ h1, h2, h3, h4, h5, h6
 .section__text-block--white
 	color: var(--color-text-light)
 .section__text-block:not(:last-child)
-	margin-bottom: .5em
-
-// Цитаты
-blockquote
-	position: relative
-	margin: 30px 0
-	padding: 30px 30px 30px 90px
-	font-size: inherit
-	font-weight: 100
-	font-style: italic
-	&:before
-		content: "\201C"
-		font-family: sans-serif
-		position: absolute
-		font-style: normal
-		left: 20px
-		top: 0px
-		width: 50px
-		height: 50px
-		border-radius: 50%
-		font-size: 50px
-		text-align: center
-		font-size: 3.25em
-		line-height: 1.5
+	margin-bottom: var(--margin-sm)
 
 // Header
 .header
@@ -212,7 +166,6 @@ blockquote
 // Оверлей с меню
 .menu
 	position: fixed
-	display: flex
 	flex-direction: column
 	width: 100vw
 	height: 100vh
@@ -222,7 +175,6 @@ blockquote
 	opacity: 0
 	visibility: hidden
 	transition: .3s opacity ease-in-out
-	z-index: 1
 .menu__close-btn
 	width: 50px
 	height: 50px
@@ -231,7 +183,6 @@ blockquote
 	flex-direction: column
 	height: 100%
 .menu-item
-	display: flex
 	flex-grow: 1
 	a
 		justify-content: center
@@ -265,7 +216,6 @@ blockquote
 
 // Hero
 .hero
-	position: relative
 	height: 100vh
 	text-align: center
 	background-image: url("../img/main_bg3.jpg")
@@ -274,33 +224,44 @@ blockquote
 	height: inherit
 .hero__row
 	align-items: center
-	height: 100%
-	padding-top: calc(var(--header-height) + 5em)
-	padding-bottom: 2.5em
-.hero__link-wrap
-	position: absolute
 	width: 100%
+	padding-top: calc(var(--header-height) + 2em)
+	padding-bottom: 2em
+.hero__content
+	flex-direction: column
+	justify-content: space-around
+	width: 100%
+	height: 100%
+	margin-bottom: 2.5em
+.hero__link-wrap
+	position: relative
 	height: 150px
-	top: calc(50% - 75px)
-	background-color: var(--color-orange-transparent-50)
+	padding: .5em 1em
+	&:before
+		position: absolute
+		content: ''
+		width: calc(100% + 30px)
+		height: 100%
+		top: 0
+		left: -15px
+		background-color: var(--color-orange-transparent-50)
 	a
 		justify-content: center
 		align-items: center
 		width: 100%
-		height: inherit
 		color: #fff
 	h1
-		line-height: 1.5
+		line-height: 1.25
 		font-size: 2em
 		font-weight: 600
+		z-index: 1
+
+
 .hero__descr
 	line-height: 1.5em
 	text-transform: uppercase
 	letter-spacing: .05em
 	color: #cacaca
-.hero__descr--2
-	margin-top: auto
-	margin-bottom: 2.5em
 
 // Section 2. About
 .about__img-wrap
@@ -315,56 +276,59 @@ blockquote
 	width: 50%
 	text-align: center
 
-// Section 3. Target
+// Section 4. Target
 .target__content
-	display: flex
 	flex-direction: column
 	text-align: center
 
-// Section 4. Resume
-.resume__content
+// Section 5. Resume
+.resume__block
 	flex-direction: column
-.resume__first-block-wrap,
-.resume__second-block-wrap
-	flex-direction: column
-.resume__first-block-wrap h3,
-.resume__first-block-wrap .resume__icon,
-.resume__second-block-wrap h3,
-.resume__second-block-wrap .resume__icon
+.resume__block:not(:last-child)
+	margin-bottom: var(--section-item-mb)
+.resume__block h3,
+.resume__block .resume__icon,
+.resume__block h3,
+.resume__block .resume__icon
 	display: none
-.resume__second-block-wrap .section__item:last-child
-	margin-bottom: 0
+
+// Section 6. Certificates
+.cert__img
+	margin-bottom: var(--margin-sm)
+.cert__body
+	flex-direction: column
+.cert__header
+	color: var(--color-orange-hex)
+	margin-bottom: var(--margin-sm)
+.cert__link
+	padding: .3em .7em
+	border: 1px solid var(--color-orange-hex)
+	border-radius: 0.25em
+
+// Section 7. Books
+.books__list
+	display: flex
+	flex-direction: row
+	flex-wrap: wrap
+	align-items: start
+	justify-content: space-between
+.books__item
+	display: flex
+	flex-direction: column
+	align-items: center
+	flex-basis: 45%
+	margin-bottom: var(--margin-sm)
+.books__item img
+	max-width: 200px
+	margin-bottom: var(--margin-sm)
+	border-radius: 0 7px 7px 0
+	box-shadow: 0 0 10px rgba(0,0,0,0.6)
+.books__author, .books__descr
+	font-size: .8em
 
 
 
-
-
-
-/////////////////////////////////
-// Section 5. Books
-/////////////////////////////////
-#books
-	.books_container
-		padding: 30px 0 0
-		.books
-			padding: 7px
-			text-align: center
-			p
-				margin: 5px 0
-				&:nth-child(1)
-					font-size: 0.75em
-				&:nth-child(3)
-					font-size: 0.75em
-			img
-				width: 100%
-				border-radius: 1px 5px 5px 1px
-				box-shadow: 0 0 10px rgba(0,0,0,0.6)
-	h3
-		margin-top: 40px
-
-/////////////////////////////////
 // Section 6. Portfolio
-/////////////////////////////////
 #portfolio
 	.hovereffect
 		overflow: hidden
