@@ -1,28 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
 	const body = document.querySelector('body');
 	const burger = document.querySelector('.burger');
-	const close = document.querySelector('.close');
 	const menu = document.querySelector('.menu');
 	const links = document.querySelectorAll('.menu a');
+	let pro = burger.getAttribute('aria-expanded');
 
 	burger.addEventListener('click', function() {
 		body.classList.toggle('stop-scroll');
-		burger.setAttribute('aria-expanded', 'true');
+
+		if (pro == 'false') {
+			burger.setAttribute('aria-expanded', 'true');
+			pro = 'true';
+		} else {
+			burger.setAttribute('aria-expanded', 'false');
+			pro = 'false';
+		}
+
+		burger.classList.toggle('burger--active');
 		menu.classList.toggle('menu--active');
 		links.forEach(function(el,) {
 			el.classList.add('fadeInUp', 'animated');
 		})
 	})
-
-	close.addEventListener('click', function() {
-		body.classList.toggle('stop-scroll');
-		burger.setAttribute('aria-expanded', 'false');
-		menu.classList.toggle('menu--active');
-		links.forEach(function(el,) {
-			el.classList.remove('fadeInUp', 'animated');
-		})
-	})
-
 });
 
 

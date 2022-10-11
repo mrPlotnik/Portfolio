@@ -1,120 +1,64 @@
-section#portfolio.bg-dark
-	h2 Портфолио
-	.s_descr_wrap
-		.s_descr Мои работы
-	.container
-		.row
+section#portfolio.section.section--dark.portfolio
+	.section__container
+		.section__row
+			.section__header-wrap
+				h2.section__header.section__header--orange Портфолио
+				.section__subheader Мои работы
 
-			.col-12.col-sm-6.col-lg-4
-				.card.animation_2.mb-3
+			.section__content
 
-					.hovereffect
-						img.card-img-top(src='img/portfolio/CRM.png', alt='Домашняя бухгалтерия')
-						.overlay
-							.container.top.p-0
-								h2.card-title agency
-							.container.middle
-								.row.h-100.justify-content-center.align-items-center
-									a.info(href="https://vue-new-pro.web.app/") Перейти
-							.container.bottom.p-0
-								h2 08.04.2021
+				.section__block
+					.card.animation_2
+						.card__head
+							img.card__img(src='img/portfolio/CRM.png', alt='Домашняя бухгалтерия')
+							.card__overlay.overlay
+								.overlay__top
+									h3.overlay__title agency
+								.overlay__middle
+									a.overlay__link(href="https://vue-new-pro.web.app/") Перейти
+								.overlay__bottom
+									span.overlay__date 08.04.2021
+						.card__body
+							.card__descr
+								h4.card__title Домашняя бухгалтерия
+								p.card__text CRM для учета доходов и расходов на vue.js. Регистрация и база данных на Firebase
+							.card__btn-wrap
+								a.section__link(href="https://vue-new-pro.web.app/") Перейти
+								a.section__link(href="https://github.com/mrPlotnik/vue-new-pro") GitHub
 
-					.card-body.d-flex.flex-column
-						h5.card-title Домашняя бухгалтерия
-						p.card-text
-							| CRM для учета доходов и расходов на vue.js. Регистрация и база данных на Firebase
-						.row.align-items-end.flex-grow-1
-							.col-12.d-flex.justify-content-between
-								a.btn(href="https://vue-new-pro.web.app/") Перейти
-								a.btn(href="https://github.com/mrPlotnik/vue-new-pro") GitHub
+				.section__block
+					.card.animation_2
+						.card__head
+							img.card__img(src='img/portfolio/fitness.png', alt='fitness')
+							.card__overlay.overlay
+								.overlay__top
+									h3.overlay__title fitness
+								.overlay__middle
+									a.overlay__link(href="http://www.plotnik-web.ru/fitness/") Перейти
+								.overlay__bottom
+									span.overlay__date 13.04.2019
+						.card__body
+							.card__descr
+								h4.card__title Спортивный клуб FITNESS
+								p.card__text Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis alias tenetur possimus explicabo, itaque praesentium iure ullam quo a rerum!
+							.card__btn-wrap
+								a.section__link(href="http://www.plotnik-web.ru/fitness/") Перейти
+								a.section__link(href="https://github.com/mrPlotnik/Fitness") GitHub
 
-			.col-12.col-sm-6.col-lg-4
-				.card.animation_2.mb-3
-
-					.hovereffect
-						img.card-img-top(src='img/portfolio/agency.png', alt='agency')
-						.overlay
-							.container.top.p-0
-								h2.card-title agency
-							.container.middle
-								.row.h-100.justify-content-center.align-items-center
-									a.info(href="http://www.plotnik-web.ru/agency/") Перейти
-							.container.bottom.p-0
-								h2 25.07.2019
-
-					.card-body.d-flex.flex-column
-						h5.card-title Кадровое агенство
-						p.card-text
-							| Some quick example text to build on the card title and make up the bulk of the card's content.
-						.row.align-items-end.flex-grow-1
-							.col-12.d-flex.justify-content-between
-								a.btn(href="http://www.plotnik-web.ru/agency/") Перейти
-								a.btn(href="https://github.com/mrPlotnik/agency") GitHub
-
-			.col-12.col-sm-6.col-lg-4
-				.card.animation_2.mb-3
-
-					.hovereffect
-						img.card-img-top(src='img/portfolio/fitness.png', alt='fitness')
-						.overlay
-							.container.top.p-0
-								h2 fitness
-							.container.middle
-								.row.h-100.justify-content-center.align-items-center
-									a.info(href="http://www.plotnik-web.ru/fitness/") Перейти
-							.container.bottom.p-0
-								h2 13.04.2019
-
-					.card-body.d-flex.flex-column
-						h5.card-title Спортивный клуб FITNESS
-						p.card-text
-							| Во все времена красивое подтянутое тело являлось настоящим символом совершенства. Никто с первого взгляда не полюбит Ваш внутренний мир, с первого взгляда полюбят только Ваше тело...
-						.row.align-items-end.flex-grow-1
-							.col-12.d-flex.justify-content-between
-								a.btn(href="http://www.plotnik-web.ru/fitness/") Перейти
-								a.btn(href="https://github.com/mrPlotnik/Fitness") GitHub
-
-			.col-12.col-sm-6.col-lg-4
-				.card.animation_2.mb-3
-
-					.hovereffect
-						img.card-img-top(src='img/portfolio/topolek.jpg', alt='topolek')
-						.overlay
-							.container.top.p-0
-								h2 dstopolek
-							.container.middle
-								.row.h-100.justify-content-center.align-items-center
-									a.info(href="http://www.dstopolek.3dn.ru/") Перейти
-							.container.bottom.p-0
-								h2 02.09.2011
-
-					.card-body.d-flex.flex-column
-						h5.card-title МБОУ "Юргинская СОШ" Дошкольное структурное подразделение "Тополёк"
-						p.card-text
-							| 3 курс, практика, проба пера.
-						.row.align-items-end.flex-grow-1
-							.col-12.d-flex.justify-content-between
-								a.btn(href="http://dstopolek.3dn.ru/") Перейти
-
-			.col-12.col-sm-6.col-lg-4
-				.card.animation_2.mb-3
-
-					.hovereffect
-						img.card-img-top(src='img/portfolio/webinar.jpg', alt='topolek')
-						.overlay
-							.container.top.p-0
-								h2 webinar
-							.container.middle
-								.row.h-100.justify-content-center.align-items-center
-									a.info(href="http://www.plotnik-web.ru/webinar") Перейти
-							.container.bottom.p-0
-								h2 30.03.2020
-
-					.card-body.d-flex.flex-column
-						h5.card-title Страница ожидания вебинара
-						p.card-text
-							|  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis repudiandae error culpa cum, adipisci tempore.
-						.row.align-items-end.flex-grow-1
-							.col-12.d-flex.justify-content-between
-									a.btn(href="http://www.plotnik-web.ru/webinar") Перейти
-									a.btn(href="https://github.com/mrPlotnik/webinar") GitHub
+				.section__block
+					.card.animation_2
+						.card__head
+							img.card__img(src='img/portfolio/topolek.jpg', alt='topolek')
+							.card__overlay.overlay
+								.overlay__top
+									h3.overlay__title dstopolek
+								.overlay__middle
+									a.overlay__link(href="http://www.dstopolek.3dn.ru/") Перейти
+								.overlay__bottom
+									span.overlay__date 02.09.2011
+						.card__body
+							.card__descr
+								h4.card__title МБОУ "Юргинская СОШ" Дошкольное структурное подразделение "Тополёк"
+								p.card__text 3 курс, практика, проба пера.
+							.card__btn-wrap
+								a.section__link(href="http://dstopolek.3dn.ru/") Перейти

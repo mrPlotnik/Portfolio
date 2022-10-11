@@ -1,37 +1,32 @@
-section#contacts.bg_light
-	h2 Контакты
-	.s_descr_wrap
-		.s_descr Связаться со мной
-	.container
-		.row
-			.col-md-6.col-sm-6
-				.contact_box
-					.div-icon
-						img(src="img/icons/location.svg", alt="Адрес")
-					h3 Адрес:
-					p Россия, Кемеровская обл., г. Юрга
-				.contact_box
-					.div-icon
-						img(src="img/icons/vk.svg", alt="VK")
-					h3 ВКонтакте:
-					p
-						a(href='https://vk.com/mr__pro', target='_blank') vk.com/mr__pro
-				.contact_box
-					.div-icon
-						img(src="img/icons/github.svg", alt="GitHub")
-					h3 github:
-					p
+section#contacts.section.contacts
+	.section__container
+		.section__row
+			.section__header-wrap
+				h2.section__header.section__header--orange Контакты
+				.section__subheader Связаться со мной
+
+			.section__content
+
+				.section__block
+
+					.section__item
+						.contacts__img
+							img(src="img/icons/github.svg", alt="Telegram")
+						span.contacts__title ВКонтакте
+						a(href='https://t.me/lev_ligr', target='_blank') lev_ligr
+
+					.section__item
+						.contacts__img
+							img(src="img/icons/github.svg", alt="GitHub")
+						span.contacts__title github
 						a(href='https://github.com/mrPlotnik', target='_blank') github.com/mrPlotnik
-			.col-md-6.col-sm-6
-				.contact_box
-					.div-icon
-						img(src="img/icons/email.svg", alt="E-mail")
-					h3 Email:
-					p
+
+				.section__block
+
+					.section__item
+						.contacts__img
+							img(src="img/icons/email.svg", alt="E-mail")
+						span.contacts__title Email
 						a(href='mailto:plotnik1992@gmail.com') plotnik1992@gmail.com
-				.contact_box
-					.div-icon
-						img(src="img/icons/codepen.svg", alt="CodePen")
-					h3 codepen profile:
-					p
-						a(href='https://codepen.io/plotnik1992/') codepen.io/plotnik1992
+
+
