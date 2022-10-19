@@ -12,10 +12,11 @@ html
 		title Сайт-портфолио веб-разработчика
 	body
 		//- Лоадер
-		.loader
-			.loader_inner
+		//- .loader
+			//- .loader_inner
 
 		include includes/1-header.pug
+
 		main#main.main
 			include includes/2-hero.pug
 			include includes/3-about.pug
@@ -25,6 +26,7 @@ html
 			include includes/7-books.pug
 			include includes/8-portfolio.pug
 			include includes/9-contacts.pug
-			include includes/10-footer.pug
+
+		include includes/10-footer.pug
 
 		script(src='js/scripts.min.js')

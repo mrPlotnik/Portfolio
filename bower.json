@@ -6,7 +6,6 @@
     "animate.css": "3.5.2",
     "jquery": "2.*",
     "magnific-popup": "1.0.0",
-    "page-scroll-to-id": "*",
     "waypoints": "2.0.3",
     "jquery.stellar": "stellar.js#^0.6.2"
   },

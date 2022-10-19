@@ -1,5 +1,5 @@
 header#header.header
-	.section__container
+	.s__container
 		.header__row
 			.header__logo
 				svg(width="350pt", height="275pt", viewBox="0 0 350 275", version="1.1", xmlns="http://www.w3.org/2000/svg")
@@ -9,24 +9,19 @@ header#header.header
 					span.burger__line.burger__line--1
 					span.burger__line.burger__line--2
 					span.burger__line.burger__line--3
-		nav.menu
-			//- .menu__btn-wrap
-			//- 	button.menu__close-btn.close.btn-reset
-			//- 		.close__wrap
-			//- 			span.close__line.close__line--1
-			//- 			span.close__line.close__line--2
-			ul.menu-list.list-reset
-				li.menu-item
-					a(href='#about') Обо мне
-				li.menu-item
-					a(href='#target') Цель
-				li.menu-item
-					a(href='#resume') Резюме
-				li.menu-item
-					a(href='#certificates') Сертификаты
-				li.menu-item
-					a(href='#books') Книги
-				li.menu-item
-					a(href='#portfolio') Портфолио
-				li.menu-item
-					a(href='#contacts') Контакты
+			nav.menu
+				ul.menu-list.list-reset
+					li.menu-item
+						a.smooth-scroll(href='#about') Обо мне
+					li.menu-item
+						a.smooth-scroll(href='#target') Цель
+					li.menu-item
+						a.smooth-scroll(href='#resume') Резюме
+					li.menu-item
+						a.smooth-scroll(href='#certificates') Сертификаты
+					li.menu-item
+						a.smooth-scroll(href='#books') Книги
+					li.menu-item
+						a.smooth-scroll(href='#portfolio') Портфолио
+					li.menu-item
+						a.smooth-scroll(href='#contacts') Контакты

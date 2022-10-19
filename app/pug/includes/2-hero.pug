@@ -1,24 +1,23 @@
-section#hero.section.hero
-	.section__container.hero__container
-		.section__row.hero__row
+section#hero.s.hero(data-stellar-background-ratio='0.5')
+	.s__container.hero__container
+		.s__row.hero__row
 
 			.hero__content
 
-				p.hero__descr.hero__descr--1 Сайт-портфолио
+				p.hero__descr Сайт-портфолио
 					br
 					|веб-разработчика
 
-				.hero__link-wrap
-					a.scroll2id(href='#about')
+				a.hero__link.smooth-scroll(href='#about')
+					.hero__link-wrap
 						h1 Андрей Плотников
 
 				p.hero__descr
 					|Frontend-разработчик&nbsp;/
 					br
 					|HTML&dash;верстальщик&nbsp;/
-					br
 					|Программист&nbsp;JavaScript
 
-			.mouse-icon
-				.wheel
-					.top_wrapper
+			a.smooth-scroll(href='#about')
+				.hero__mouse-icon
+					.hero__wheel

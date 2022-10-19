@@ -1,5 +1,132 @@
 @media (min-width: 576px)
+	:root
+		--container-px: 30px
+
+	// Section 2. Hero
 	.hero__row
 		font-size: 1.25em
 
+	// Section 5. Resume
+	.resume__header,
+	.resume__icon
+		display: flex
+	.resume__header
+		margin-bottom: var(--section-block-mb)
+		font-weight: 500
+		font-size: 1.1em
+	.resume__icon
+		width: 30px
+		height: 30px
+		margin-bottom: var(--section-block-mb)
+	#resume .section__content
+		flex-direction: row
+		justify-content: space-between
+	#resume .section__block
+		flex-basis: 50%
+	.resume__block-1
+		align-items: flex-end
+		text-align: right
+		padding-right: 1em
+		border-right: 1px solid var(--color-orange-hex)
+		.section__item
+			align-items: flex-end
+	.resume__block-2
+		padding-left: 1em
+		.section__item
+			align-items: flex-start
+	.section__item-header
+		text-align: unset
+		padding: 0 .5em
 
+	// Section 8. Portfolio
+	#portfolio .section__content
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: space-between
+	.portfolio__block-1,
+	.portfolio__block-2,
+	.portfolio__block-3
+		flex-basis: calc(50% - 1em)
+
+	// Section 9. Contacts
+	#contacts .section__content
+		flex-direction: row
+		justify-content: space-between
+	#contacts .section__block:not(:last-child)
+		padding-bottom: 0
+	.contacts__block-1,
+	.contacts__block-2
+		flex-basis: calc(50% - 1em)
+
+@media (min-width: 768px)
+	:root
+		--container-px: 50px
+
+	// Section 2. Hero
+	.hero__row
+		font-size: 1.5em
+
+	// Section 3. About
+	#about .section__content
+		flex-direction: row
+		justify-content: space-between
+	#about .section__block:not(:last-child)
+		margin-right: 1em
+		padding-bottom: 0
+	.about__block-2
+		flex-direction: row
+		align-items: center
+	.about__block-1,
+	.about__block-3
+		flex-basis: calc(70% - 1em)
+	.about__img
+		width: 100%
+
+	// Section 6. Certificates
+	#cert .section__content
+		flex-direction: row
+		justify-content: space-between
+	#cert .section__block:not(:last-child)
+		padding-bottom: 0
+	.cert__block-1,
+	.cert__block-2
+		flex-basis: calc(50% - 1em)
+
+	// Section 7. Books
+	.books__item
+		flex-basis: calc(25% - 1em)
+
+@media (min-width: 1024px)
+	.burger
+		opacity: 0
+	.hero__link-wrap
+		justify-content: center
+	.hero__link::before
+		justify-content: center
+		width: 100%
+		left: 0
+		border-radius: 20px
+	.hero__link
+		width: 70vw
+
+	.menu
+		position: unset
+		flex-direction: row
+		justify-content: end
+		width: 100%
+		height: auto
+		padding: 0
+		opacity: 1
+		visibility: visible
+		background-color: unset
+	.menu-item a
+		opacity: 1
+		letter-spacing: normal
+		text-transform: unset
+		font-size: 1em
+	.menu-list
+		flex-direction: row
+		flex-grow: 0
+		padding: 0
+	.menu-item:not(:last-child)
+		margin-right: 1em
