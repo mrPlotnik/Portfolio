@@ -7,7 +7,7 @@
 *
 	margin: 0
 	padding: 0
-	outline: 1px solid var(--color-orange-transparent-80)
+	// outline: 1px solid var(--color-orange-transparent-80)
 *, ::before, ::after
 	box-sizing: border-box
 body
@@ -136,6 +136,11 @@ h1, h2, h3, h4, h5, h6
 		animation: notransform 5s infinite
 		transform: rotateY(180deg)
 		animation-delay: 2s
+		path
+			transition: .3s fill ease-in-out
+	&:hover
+		svg path
+			fill: var(--color-orange-hex)
 @-webkit-keyframes notransform
 	50%
 		transform: none

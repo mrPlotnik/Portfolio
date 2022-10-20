@@ -8,7 +8,11 @@
 	border-radius: 16px
 	opacity: .7
 	// cursor: pointer
-	z-index: 10
+	outline: 1px solid transparent
+	transition: .3s outline ease-in-out
+	z-index: 2
+	&:hover
+		outline: 1px solid var(--color-orange-hex)
 	.hero__wheel
 		animation-name: drop
 		animation-duration: 1s

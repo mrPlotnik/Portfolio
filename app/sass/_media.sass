@@ -18,28 +18,28 @@
 		width: 30px
 		height: 30px
 		margin-bottom: var(--section-block-mb)
-	#resume .section__content
+	#resume .s__content
 		flex-direction: row
 		justify-content: space-between
-	#resume .section__block
+	#resume .s__block
 		flex-basis: 50%
 	.resume__block-1
 		align-items: flex-end
 		text-align: right
 		padding-right: 1em
 		border-right: 1px solid var(--color-orange-hex)
-		.section__item
+		.s__item
 			align-items: flex-end
 	.resume__block-2
 		padding-left: 1em
-		.section__item
+		.s__item
 			align-items: flex-start
-	.section__item-header
+	.s__item-header
 		text-align: unset
 		padding: 0 .5em
 
 	// Section 8. Portfolio
-	#portfolio .section__content
+	#portfolio .s__content
 		flex-direction: row
 		flex-wrap: wrap
 		justify-content: space-between
@@ -49,11 +49,12 @@
 		flex-basis: calc(50% - 1em)
 
 	// Section 9. Contacts
-	#contacts .section__content
+	#contacts .s__content
 		flex-direction: row
 		justify-content: space-between
-	#contacts .section__block:not(:last-child)
+	#contacts .s__block:not(:last-child)
 		padding-bottom: 0
+		margin-bottom: 0
 	.contacts__block-1,
 	.contacts__block-2
 		flex-basis: calc(50% - 1em)
@@ -67,10 +68,10 @@
 		font-size: 1.5em
 
 	// Section 3. About
-	#about .section__content
+	#about .s__content
 		flex-direction: row
 		justify-content: space-between
-	#about .section__block:not(:last-child)
+	#about .s__block:not(:last-child)
 		margin-right: 1em
 		padding-bottom: 0
 	.about__block-2
@@ -83,10 +84,10 @@
 		width: 100%
 
 	// Section 6. Certificates
-	#cert .section__content
+	#cert .s__content
 		flex-direction: row
 		justify-content: space-between
-	#cert .section__block:not(:last-child)
+	#cert .s__block:not(:last-child)
 		padding-bottom: 0
 	.cert__block-1,
 	.cert__block-2
