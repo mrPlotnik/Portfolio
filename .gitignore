@@ -1,7 +1,4 @@
 ﻿node_modules
-dist
-
-app/libs
-
-debug.log
 package-lock.json
+src/libs
+build

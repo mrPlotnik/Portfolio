@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	burger();
 
-	$(window).stellar();
+	// $(window).stellar();
 
 	// Анимация
 	$(".header__logo").addClass("flipInY animated").css("animation-delay", "0.5s")	;

@@ -1,7 +1,7 @@
 @import "vars"
-@import "font"
+@import "mixins"
+@import "fonts"
 @import "libs"
-@import "loader"
 @import "mouse-icon"
 
 *
@@ -11,7 +11,7 @@
 *, ::before, ::after
 	box-sizing: border-box
 body
-	font-family: $dflt-font
+	font-family: $font, sans-serif
 	font-size: 16px
 	min-width: 320px
 	line-height: 1.5em
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6
 	color: var(--color-orange-hex)
 .s__header
 	margin-bottom: 5px
-	font-weight: 500
+	font-weight: 400
 	font-size: 2em
 	line-height: 1.5em
 	letter-spacing: .05em
@@ -292,7 +292,7 @@ h1, h2, h3, h4, h5, h6
 	h1
 		line-height: 1.25
 		font-size: 2em
-		font-weight: 600
+		font-weight: 700
 		z-index: 1
 		color: var(--color-white)
 .hero__descr
@@ -332,7 +332,7 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	flex-direction: row
 	flex-wrap: wrap
-	align-items: start
+	align-items: flex-start
 	justify-content: space-between
 .books__item
 	display: flex
@@ -420,7 +420,7 @@ h1, h2, h3, h4, h5, h6
 	padding-bottom: 1em
 .card__title
 	margin-bottom: 0.75em
-	font-weight: 900
+	font-weight: 700
 	color: var(--color-orange-hex)
 .card__text
 	color: #fff
@@ -438,7 +438,6 @@ h1, h2, h3, h4, h5, h6
 // Section 8. Footer
 .footer-copy
 	font-size: 13px
-	font-weight: 300
 	color: #fff
 .footer .s__row
 	padding: 1em 0
