@@ -47,6 +47,14 @@ h1, h2, h3, h4, h5, h6
 	font-style: italic
 
 // Glob
+.s__overlay
+	position: absolute
+	height: 100%
+	width: 100%
+	background-repeat: repeat
+	background-color: rgba(44, 62, 80, 0.3)
+	background-image: url("../img/pattern.png")
+	z-index: 0
 .s__container
 	width: 100%
 	min-width: 320px
@@ -69,22 +77,24 @@ h1, h2, h3, h4, h5, h6
 	width: 10em
 	height: 1px
 	bottom: -1.25em
-	background-color: #6c757d
-.s__header--orange
-	color: var(--color-orange-hex)
+	background-color: $color-subheader
 .s__header
 	margin-bottom: 5px
 	font-weight: 400
 	font-size: 2em
 	line-height: 1.5em
 	letter-spacing: .05em
+	color: $color-header-dark
+.s__header--orange
+	color: $color-header-light
 .s__subheader
 	font-size: .8em
 	letter-spacing: .15em
 	text-transform: uppercase
-	color: #6c757d
+	color: $color-subheader
 .s__content
 	flex-direction: column
+	z-index: 1
 
 .s__block,
 .s__item
@@ -101,7 +111,8 @@ h1, h2, h3, h4, h5, h6
 	color: #fff
 	background-color: var(--color-orange-hex)
 .s--dark
-	background-color: var(--color-bg-dark)
+	position: relative
+	background-color: $color-bg-dark
 .s__text-block
 	color: #000
 .s__text-block--white
@@ -183,7 +194,7 @@ h1, h2, h3, h4, h5, h6
 	height: calc(var(--header-height) / 2.5)
 .burger--active .burger__line--1,
 .burger--active .burger__line--3
-	top: 1em
+	top: 0.875em
 .burger--active .burger__line--1
 	transform: rotate(45deg)
 .burger--active .burger__line--2
@@ -248,8 +259,9 @@ h1, h2, h3, h4, h5, h6
 .hero
 	height: 100vh
 	text-align: center
-	background-image: url("../img/main_bg3.jpg")
+	background-image: url("../img/bg2.jpg")
 	background-size: cover
+	background-position: 50% 0px
 .hero__container
 	height: inherit
 .hero__row
@@ -271,7 +283,7 @@ h1, h2, h3, h4, h5, h6
 	justify-content: center
 	width: 100%
 	height: 7em
-	padding: .5em 1em
+	padding: .5em 0
 	z-index: 0
 	&::before
 		position: absolute
@@ -290,13 +302,14 @@ h1, h2, h3, h4, h5, h6
 	align-items: center
 	width: 100%
 	h1
-		line-height: 1.25
-		font-size: 2em
+		line-height: 1.25em
+		font-size: 1.25em
 		font-weight: 700
 		z-index: 1
 		color: var(--color-white)
 .hero__descr
 	line-height: 1.5em
+	font-size: 0.75em
 	text-transform: uppercase
 	letter-spacing: .05em
 	color: var(--color-white)
@@ -317,6 +330,13 @@ h1, h2, h3, h4, h5, h6
 .resume__header,
 .resume__icon
 	display: none
+.resume__svg-wrap
+	display: inline-flex
+	width: 20px
+	height: 20px
+	margin-bottom: -5px
+	margin-right: 3px
+	margin-left: 3px
 
 // Section 6. Certificates
 .cert__img
@@ -441,5 +461,6 @@ h1, h2, h3, h4, h5, h6
 	color: #fff
 .footer .s__row
 	padding: 1em 0
+
 
 @import "media"

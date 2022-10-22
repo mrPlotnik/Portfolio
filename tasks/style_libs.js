@@ -1,6 +1,7 @@
 const plugins = [
 	"src/libs/normalize.css/normalize.css",
 	"src/libs/animate.css/animate.min.css",
+	"src/libs/magnific-popup/dist/magnific-popup.css"
 ];
 
 const {
