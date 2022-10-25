@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		links.forEach((el, index) => {
 			el.addEventListener('click', function(e) {
-				body.classList.toggle('stop-scroll');
-				burger.classList.toggle('burger--active');
-				menu.classList.toggle('menu--active');
+				body.classList.remove('stop-scroll');
+				burger.classList.remove('burger--active');
+				menu.classList.remove('menu--active');
 				isActive();
 			})
 		})

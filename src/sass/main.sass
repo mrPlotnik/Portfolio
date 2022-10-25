@@ -7,7 +7,7 @@
 *
 	margin: 0
 	padding: 0
-	// outline: 1px solid var(--color-orange-transparent-80)
+	outline: 1px solid $color-main--transparent-30
 *, ::before, ::after
 	box-sizing: border-box
 body
@@ -26,7 +26,12 @@ img
 a
 	width: fit-content
 	text-decoration: none
-	color: var(--color-orange-hex)
+	color: $color-main
+	outline: transparent
+	+transition(color)
+	&:hover
+		color: $color-secondary--light
+
 h1, h2, h3, h4, h5, h6
 	line-height: inherit
 	font-size: inherit
@@ -52,19 +57,20 @@ h1, h2, h3, h4, h5, h6
 	height: 100%
 	width: 100%
 	background-repeat: repeat
-	background-color: rgba(44, 62, 80, 0.3)
+	background-color: $color-secondary--transparent
 	background-image: url("../img/pattern.png")
 	z-index: 0
 .s__container
 	width: 100%
 	min-width: 320px
+	max-width: 1024px
 	margin: 0 auto
-	padding: 0 var(--container-px)
+	padding: 0 $gutter-container-320
 .s__row
 	flex-direction: column
 	width: 100%
-	padding-top: var(--section-row-my)
-	padding-bottom: var(--section-row-my)
+	padding-top: 3em
+	padding-bottom: 3em
 .s__header-wrap
 	position: relative
 	flex-direction: column
@@ -77,21 +83,21 @@ h1, h2, h3, h4, h5, h6
 	width: 10em
 	height: 1px
 	bottom: -1.25em
-	background-color: $color-subheader
+	background-color: $color-gray--66
 .s__header
 	margin-bottom: 5px
 	font-weight: 400
 	font-size: 2em
 	line-height: 1.5em
 	letter-spacing: .05em
-	color: $color-header-dark
+	color: $color-secondary
 .s__header--orange
-	color: $color-header-light
+	color: $color-main
 .s__subheader
 	font-size: .8em
 	letter-spacing: .15em
 	text-transform: uppercase
-	color: $color-subheader
+	color: $color-gray--66
 .s__content
 	flex-direction: column
 	z-index: 1
@@ -101,35 +107,39 @@ h1, h2, h3, h4, h5, h6
 	flex-direction: column
 .s__block:not(:last-child),
 .s__item:not(:last-child)
-	margin-bottom: var(--section-block-mb)
+	margin-bottom: $gutter-15
 
 .s__item-header
-	margin-bottom: var(--section-item-header-mb)
+	margin-bottom: $gutter-10
 	text-align: center
 	font-weight: 400
 	font-style: italic
 	color: #fff
-	background-color: var(--color-orange-hex)
+	background-color: $color-main
 .s--dark
 	position: relative
-	background-color: $color-bg-dark
+	background-color: $color-secondary--transparent
 .s__text-block
 	color: #000
 .s__text-block--white
-	color: var(--color-text-light)
+	color: $color-white
 .s__text-block:not(:last-child)
-	margin-bottom: var(--margin-sm)
+	margin-bottom: $gutter-05
 .s__link
 	padding: .3em .7em
-	border: 1px solid var(--color-orange-hex)
+	border: 1px solid $color-main
 	border-radius: 0.25em
+	+transition(border-color, color)
+	&:hover
+		color: $color-secondary--light
+		border-color: $color-secondary--light
 
 // Header
 .header
 	position: absolute
 	width: 100%
 	top: 0
-	height: var(--header-height)
+	height: $header-height
 	padding-top: 15px
 	z-index: 1
 .header__row
@@ -139,8 +149,8 @@ h1, h2, h3, h4, h5, h6
 	width: inherit
 	padding: 0
 .header__logo
-	width: calc( var(--header-height) / 1.5 )
-	height: calc( var(--header-height) / 1.5 )
+	width: calc( $header-height / 1.5 )
+	height: calc( $header-height / 1.5 )
 	perspective: 400px
 	transform-style: preserve-3d
 	svg
@@ -148,10 +158,11 @@ h1, h2, h3, h4, h5, h6
 		transform: rotateY(180deg)
 		animation-delay: 2s
 		path
-			transition: .3s fill ease-in-out
+			+transition(fill)
 	&:hover
-		svg path
-			fill: var(--color-orange-hex)
+		svg
+			path
+				fill: $color-main
 @-webkit-keyframes notransform
 	50%
 		transform: none
@@ -164,24 +175,24 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	justify-content: center
 	align-items: center
-	width: calc(var(--header-height) / 1.5)
-	height: calc(var(--header-height) / 1.5)
-	background-color: var(--color-orange-transparent-30)
-	transition: .3s background ease-in-out
+	width: calc($header-height / 1.5)
+	height: calc($header-height / 1.5)
+	background-color: $color-main--transparent-30
+	+transition(background)
 	z-index: 1
 	&:hover
-		background-color: var(--color-orange-hex)
+		background-color: $color-main
 
 .burger__wrap
 	position: relative
-	width: calc(var(--header-height) / 3)
-	height: calc(var(--header-height) / 3)
+	width: calc($header-height / 3)
+	height: calc($header-height / 3)
 .burger__line
 	position: absolute
 	width: inherit
 	height: 2px
 	left: 0
-	background-color: #fff
+	background-color: $color-white
 .burger__line--1
 	top: 0
 .burger__line--2
@@ -190,8 +201,8 @@ h1, h2, h3, h4, h5, h6
 	bottom: 0
 
 .burger--active .burger__wrap
-	width: calc(var(--header-height) / 2.5)
-	height: calc(var(--header-height) / 2.5)
+	width: calc($header-height / 2.5)
+	height: calc($header-height / 2.5)
 .burger--active .burger__line--1,
 .burger--active .burger__line--3
 	top: 0.875em
@@ -214,27 +225,42 @@ h1, h2, h3, h4, h5, h6
 	height: 100vh
 	right: 0
 	top: 0
-	padding: 1em var(--container-px)
+	padding: 1em $gutter-container-320
 	opacity: 0
 	visibility: hidden
 	background-color: rgba(0, 0, 0, 0.85)
-	transition: .3s opacity ease-in-out
+	+transition(opacity)
 .menu-list
 	flex-direction: column
 	flex-grow: 1
 	padding-top: 3.25em
 .menu-item
+	display: flex
+	justify-content: center
+	align-items: center
 	flex-grow: 1
 	a
+		position: relative
 		justify-content: center
 		align-items: center
-		width: 100%
-		height: 100%
-		font-size: 1.5em
 		letter-spacing: 4px
 		text-transform: uppercase
 		opacity: 0
 		color: #fff
+		+transition(color)
+		&::before
+			position: absolute
+			content: ''
+			width: calc(100% + 15px)
+			height: calc(100% + 5px)
+			opacity: 0
+			outline: 1px solid $color-main
+			+transition(opacity)
+		&:hover
+			color: $color-main
+		&:focus-visible:before
+			opacity: 1
+
 	&:nth-child(1) a
 		animation-delay: 0s
 	&:nth-child(2) a
@@ -262,12 +288,14 @@ h1, h2, h3, h4, h5, h6
 	background-image: url("../img/bg2.jpg")
 	background-size: cover
 	background-position: 50% 0px
+#hero .s__overlay
+	background-color: $color-secondary--transparent
 .hero__container
 	height: inherit
 .hero__row
 	align-items: center
 	width: 100%
-	padding-top: calc(var(--header-height) + 2em)
+	padding-top: calc($header-height + 2em)
 	padding-bottom: 2em
 .hero__content
 	flex-direction: column
@@ -275,9 +303,9 @@ h1, h2, h3, h4, h5, h6
 	align-items: center
 	width: 100%
 	height: 100%
-	margin-bottom: 2.5em
+	margin-bottom: $gutter-25
 .hero__content > *:not(:last-child)
-	margin-bottom: 1em
+	margin-bottom: $gutter-10
 .hero__link
 	position: relative
 	justify-content: center
@@ -291,12 +319,12 @@ h1, h2, h3, h4, h5, h6
 		width: 100vw
 		height: 100%
 		top: 0
-		left: calc(-1 * var(--container-px))
-		background-color: var(--color-orange-transparent-50)
-		transition: .3s background ease-in-out
+		left: calc(-1 * $gutter-container-320)
+		background-color: $color-main--transparent-30
+		+transition(background)
 	&:hover
 		&::before
-			background-color: var(--color-orange-transparent-30)
+			background-color: $color-main--transparent-30
 .hero__link-wrap
 	justify-content: center
 	align-items: center
@@ -306,13 +334,13 @@ h1, h2, h3, h4, h5, h6
 		font-size: 1.25em
 		font-weight: 700
 		z-index: 1
-		color: var(--color-white)
+		color: $color-white
 .hero__descr
 	line-height: 1.5em
 	font-size: 0.75em
 	text-transform: uppercase
 	letter-spacing: .05em
-	color: var(--color-white)
+	color: $color-white
 
 // Section 3. About
 .about__img-wrap
@@ -338,14 +366,14 @@ h1, h2, h3, h4, h5, h6
 	margin-right: 3px
 	margin-left: 3px
 
-// Section 6. Certificates
+// Section 6. Cert
 .cert__img
-	margin-bottom: var(--margin-sm)
+	margin-bottom: $gutter-05
 .cert__body
 	flex-direction: column
 .cert__header
-	color: var(--color-orange-hex)
-	margin-bottom: var(--margin-sm)
+	color: $color-main
+	margin-bottom: $gutter-05
 
 // Section 7. Books
 .books__list
@@ -359,10 +387,10 @@ h1, h2, h3, h4, h5, h6
 	flex-direction: column
 	align-items: center
 	flex-basis: 48%
-	margin-bottom: var(--margin-sm)
+	margin-bottom: $gutter-05
 .books__item img
 	max-width: 200px
-	margin-bottom: var(--margin-sm)
+	margin-bottom: $gutter-05
 	border-radius: 0 7px 7px 0
 	box-shadow: 0 0 10px rgba(0,0,0,0.6)
 .books__author, .books__descr
@@ -374,7 +402,6 @@ h1, h2, h3, h4, h5, h6
 .card,
 .card__body
 	flex-direction: column
-	height: 100%
 .card__head
 	justify-content: center
 	flex-shrink: 0
@@ -383,7 +410,7 @@ h1, h2, h3, h4, h5, h6
 	position: relative
 	text-align: center
 .card__img
-	transition: .3s all ease-in-out
+	+transition(filter, transform)
 .overlay
 	position: absolute
 	flex-direction: column
@@ -393,14 +420,14 @@ h1, h2, h3, h4, h5, h6
 	left: 0
 .overlay__title
 	font-weight: 400
-	color: var(--color-orange-hex)
+	color: $color-main
 .overlay__link
 	padding: 1em
 	color: #fff
 	background-color: rgba(0, 0, 0, .7)
-	transition: .3s all ease-in-out
+	+transition(background)
 .overlay__link:hover
-	background-color: var(--color-orange-hex)
+	background-color: $color-main
 .overlay__date
 	color: #fff
 .overlay__top,
@@ -411,7 +438,7 @@ h1, h2, h3, h4, h5, h6
 	font-size: .9em
 	opacity: 0
 	text-transform: uppercase
-	transition: .3s all ease-in-out
+	+transition(background, opacity)
 .overlay__top,
 .overlay__bottom
 	background-color: rgba(0, 0, 0, .7)
@@ -432,7 +459,7 @@ h1, h2, h3, h4, h5, h6
 
 .card__body
 	justify-content: space-between
-	min-height: 300px
+	min-height: 250px
 	padding: 1.25em
 	background-color: #000
 .card__descr
@@ -441,7 +468,7 @@ h1, h2, h3, h4, h5, h6
 .card__title
 	margin-bottom: 0.75em
 	font-weight: 700
-	color: var(--color-orange-hex)
+	color: $color-main
 .card__text
 	color: #fff
 .card__btn-wrap

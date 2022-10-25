@@ -1,23 +1,26 @@
 @media (min-width: 576px)
-	:root
-		--container-px: 30px
+	.s__container
+		padding: 0 $gutter-container-576
 
 	// Section 2. Hero
 	.hero__row
 		font-size: 1.25em
+	.hero__link
+		&::before
+			left: calc(-1 * $gutter-container-576)
 
 	// Section 5. Resume
 	.resume__header,
 	.resume__icon
 		display: flex
 	.resume__header
-		margin-bottom: var(--section-block-mb)
+		margin-bottom: $gutter-15
 		font-weight: 500
 		font-size: 1.1em
 	.resume__icon
 		width: 30px
 		height: 30px
-		margin-bottom: var(--section-block-mb)
+		margin-bottom: $gutter-15
 	#resume .s__content
 		flex-direction: row
 		justify-content: space-between
@@ -27,7 +30,7 @@
 		align-items: flex-end
 		text-align: right
 		padding-right: 1em
-		border-right: 1px solid var(--color-orange-hex)
+		border-right: 1px solid $color-main
 		.s__item
 			align-items: flex-end
 	.resume__block-2
@@ -38,15 +41,31 @@
 		text-align: unset
 		padding: 0 .5em
 
+		// Section 6. Certificates
+	#cert .s__content
+		flex-direction: row
+		justify-content: space-between
+	#cert .s__block:not(:last-child)
+		margin-right: 1em
+		padding-bottom: 0
+	.cert__block-1,
+	.cert__block-2
+		flex-basis: calc(50% - 1em)
+
 	// Section 8. Portfolio
 	#portfolio .s__content
 		flex-direction: row
 		flex-wrap: wrap
 		justify-content: space-between
+	#portfolio .s__block:not(:last-child)
+		margin-right: 1em
+		padding-bottom: 0
 	.portfolio__block-1,
 	.portfolio__block-2,
 	.portfolio__block-3
 		flex-basis: calc(50% - 1em)
+	.card__body
+		min-height: 300px
 
 	// Section 9. Contacts
 	#contacts .s__content
@@ -60,8 +79,8 @@
 		flex-basis: calc(50% - 1em)
 
 @media (min-width: 768px)
-	:root
-		--container-px: 50px
+	.s__container
+		padding: 0 $gutter-container-768
 
 	// Section 2. Hero
 	.hero__row
@@ -83,19 +102,26 @@
 	.about__img
 		width: 100%
 
-	// Section 6. Certificates
+	// Section 7. Cert
 	#cert .s__content
 		flex-direction: row
-		justify-content: space-between
-	#cert .s__block:not(:last-child)
-		padding-bottom: 0
+		justify-content: flex-start
 	.cert__block-1,
 	.cert__block-2
-		flex-basis: calc(50% - 1em)
+		flex-basis: calc(33% - 1em)
 
 	// Section 7. Books
 	.books__item
 		flex-basis: calc(25% - 1em)
+
+	// Section 7. Portfolio
+	#portfolio .s__content
+		flex-direction: row
+		justify-content: flex-start
+	.portfolio__block-1,
+	.portfolio__block-2,
+	.portfolio__block-3
+		flex-basis: calc(33% - 1em)
 
 @media (min-width: 1024px)
 	.burger
@@ -109,7 +135,7 @@
 		left: 0
 		border-radius: 20px
 	.hero__link
-		width: 70vw
+		width: 70%
 
 	.menu
 		position: unset
@@ -132,3 +158,11 @@
 		padding: 0
 	.menu-item:not(:last-child)
 		margin-right: 1em
+
+	// Section 7. Cert
+	#cert .s__block:not(:last-child)
+		margin-right: 2em
+		padding-bottom: 0
+	.cert__block-1,
+	.cert__block-2
+		flex-basis: calc(33% - 2em)
