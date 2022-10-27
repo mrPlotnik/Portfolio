@@ -15,7 +15,7 @@ exports.img_rastr = tasks.img_rastr;
 exports.ttf = tasks.ttf;
 exports.bs_html = tasks.bs_html;
 exports.watch = tasks.watch;
-// exports.deploy = tasks.deploy;
+exports.deploy = tasks.deploy;
 
 exports.default = gulp.parallel(
   exports.style_libs,
