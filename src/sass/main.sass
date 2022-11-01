@@ -128,9 +128,10 @@ h1, h2, h3, h4, h5, h6
 .s__text-block:not(:last-child)
 	margin-bottom: $gutter-05
 .s__link
-	padding: .3em .7em
+	padding: .25em .75em
 	border: 1px solid $color-main
 	border-radius: 0.25em
+	font-size: 1em
 	+transition(border-color, color)
 	&:hover
 		color: $color-secondary--light
@@ -369,13 +370,31 @@ h1, h2, h3, h4, h5, h6
 	margin-left: 3px
 
 // Section 6. Cert
+#cert .s__content
+	flex-direction: row
+	flex-wrap: wrap
+	justify-content: space-between
+#cert .s__block
+	flex-basis: calc(50% - $gutter-05)
+	max-width: 320px
+#cert .s__block:not(:last-child)
+	margin-bottom: 0
+#cert .s__block:first-child
+	margin-bottom: $gutter-15
 .cert__img
 	margin-bottom: $gutter-05
 .cert__body
 	flex-direction: column
 .cert__header
-	color: $color-main
+	font-weight: 400
+	font-size: .75em
+	text-transform: unset
+	color: $color-white
 	margin-bottom: $gutter-05
+#cert	.s__link
+	justify-content: center
+	width: 100%
+	font-size: .75em
 
 // Section 7. Books
 .books__list
@@ -388,7 +407,7 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	flex-direction: column
 	align-items: center
-	flex-basis: 48%
+	flex-basis: calc(50% - $gutter-05)
 	margin-bottom: $gutter-05
 .books__item img
 	max-width: 200px
@@ -404,6 +423,7 @@ h1, h2, h3, h4, h5, h6
 .card,
 .card__body
 	flex-direction: column
+	flex-grow: 1
 .card__head
 	justify-content: center
 	flex-shrink: 0

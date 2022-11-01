@@ -41,28 +41,23 @@
 		text-align: unset
 		padding: 0 .5em
 
-		// Section 6. Certificates
-	#cert .s__content
-		flex-direction: row
-		justify-content: space-between
-	#cert .s__block:not(:last-child)
-		margin-right: 1em
-		padding-bottom: 0
-	.cert__block-1,
-	.cert__block-2
-		flex-basis: calc(50% - 1em)
+	// Section 6. Certificates
+	#cert
+		.cert__header,
+		.s__link
+			font-size: 1em
 
 	// Section 8. Portfolio
 	#portfolio .s__content
 		flex-direction: row
 		flex-wrap: wrap
 		justify-content: space-between
-	.portfolio__block-1,
-	.portfolio__block-2,
-	.portfolio__block-3
-		flex-basis: calc(50% - 1em)
-	.card__body
-		min-height: 300px
+	#portfolio .s__block
+		flex-basis: calc(50% - $gutter-10)
+	#portfolio .s__block:not(:last-child)
+		margin-bottom: 0
+	#portfolio .s__block:not(:nth-last-child(-n+2))
+		margin-bottom: $gutter-10
 
 	// Section 9. Contacts
 	#contacts .s__content
@@ -73,7 +68,7 @@
 		margin-bottom: 0
 	.contacts__block-1,
 	.contacts__block-2
-		flex-basis: calc(50% - 1em)
+		flex-basis: calc(50% - $gutter-10)
 
 @media (min-width: 768px)
 	.s__container
@@ -95,29 +90,27 @@
 		align-items: center
 	.about__block-1,
 	.about__block-3
-		flex-basis: calc(70% - 1em)
+		flex-basis: calc(70% - $gutter-10)
 	.about__img
 		width: 100%
 
 	// Section 7. Cert
-	#cert .s__content
-		flex-direction: row
-		justify-content: flex-start
-	.cert__block-1,
-	.cert__block-2
-		flex-basis: calc(33% - 1em)
+	#cert .s__block
+		flex-basis: calc(33% - $gutter-10)
 
 	// Section 7. Books
 	.books__item
-		flex-basis: calc(25% - 1em)
+		flex-basis: calc(25% - $gutter-10)
 
 	// Section 7. Portfolio
 	#portfolio .s__content
 		flex-direction: row
-	.portfolio__block-1,
-	.portfolio__block-2,
-	.portfolio__block-3
-		flex-basis: calc(33% - 1em)
+	#portfolio .s__block
+		flex-basis: calc(33% - $gutter-10)
+	#portfolio .s__block:not(:nth-last-child(-n+2))
+		margin-bottom: 0
+	#portfolio .s__block:not(:nth-last-child(-n+3))
+		margin-bottom: $gutter-15
 
 @media (min-width: 1024px)
 	.burger
@@ -156,9 +149,7 @@
 		margin-right: 1em
 
 	// Section 7. Cert
-	#cert .s__block:not(:last-child)
-		margin-right: 2em
-		padding-bottom: 0
-	.cert__block-1,
-	.cert__block-2
-		flex-basis: calc(33% - 2em)
+	#cert .s__block
+		flex-basis: calc(25% - $gutter-15)
+	#cert .s__block:first-child
+		margin-bottom: 0
