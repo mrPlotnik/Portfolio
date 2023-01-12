@@ -368,6 +368,16 @@ h1, h2, h3, h4, h5, h6
 	margin-bottom: -5px
 	margin-right: 3px
 	margin-left: 3px
+.resume__list
+	flex-direction: column
+	padding-left: 25px
+.resume__list li::before
+	content: '\2022'
+	display: inline-block
+	width: 1em
+	margin-left: -1em
+	font-weight: bold
+	color: $color-main
 
 // Section 6. Cert
 #cert .s__content
@@ -410,8 +420,9 @@ h1, h2, h3, h4, h5, h6
 	flex-basis: calc(50% - $gutter-05)
 	margin-bottom: $gutter-05
 .books__item img
-	max-width: 200px
-	margin-bottom: $gutter-05
+	width: 100%
+	// max-width: 200px
+	// margin-bottom: $gutter-05
 	border-radius: 0 7px 7px 0
 	box-shadow: 0 0 10px rgba(0,0,0,0.6)
 .books__author, .books__descr
@@ -484,7 +495,7 @@ h1, h2, h3, h4, h5, h6
 	justify-content: space-between
 	min-height: 250px
 	padding: 1.25em
-	background-color: #000
+	background-color: #1f3239
 .card__descr
 	flex-direction: column
 	padding-bottom: 1em
