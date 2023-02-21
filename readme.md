@@ -1,9 +1,8 @@
 <br>
-npm i --save-dev
+npm i 
 <br>
-bower i --save-dev
+bower i 
 <br>
-gulp 
+npm run serve/npm run build
 
-NODE_ENV=production gulp
-NODE_ENV=development gulp
+<!-- Сделать tasks.deploy  -->
