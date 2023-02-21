@@ -7,14 +7,16 @@
 *
 	margin: 0
 	padding: 0
-	outline: 1px solid $color-main--transparent-30
+	// outline: 1px solid $color-main--transparent-30
 *, ::before, ::after
 	box-sizing: border-box
+html
+	overflow-x: hidden
 body
 	font-family: $font, sans-serif
 	font-size: 16px
 	min-width: 320px
-	line-height: 1.5em
+	line-height: 1.25em
 	overflow-x: hidden
 div, a, img
 	display: flex
@@ -120,15 +122,21 @@ h1, h2, h3, h4, h5, h6
 	position: relative
 	background-color: $color-secondary--transparent
 .s__text-block
+	display: block
 	color: #000
+	span
+		background-color: #ddd
+.s__text-block > div
+	display: block
 .s__text-block--white
 	color: $color-white
 .s__text-block:not(:last-child)
 	margin-bottom: $gutter-05
 .s__link
-	padding: .3em .7em
+	padding: .25em .75em
 	border: 1px solid $color-main
 	border-radius: 0.25em
+	font-size: 1em
 	+transition(border-color, color)
 	&:hover
 		color: $color-secondary--light
@@ -181,7 +189,7 @@ h1, h2, h3, h4, h5, h6
 	+transition(background)
 	z-index: 1
 	&:hover
-		background-color: $color-main
+		background-color: $color-main--transparent-20
 
 .burger__wrap
 	position: relative
@@ -324,7 +332,7 @@ h1, h2, h3, h4, h5, h6
 		+transition(background)
 	&:hover
 		&::before
-			background-color: $color-main--transparent-30
+			background-color: $color-main--transparent-20
 .hero__link-wrap
 	justify-content: center
 	align-items: center
@@ -365,15 +373,44 @@ h1, h2, h3, h4, h5, h6
 	margin-bottom: -5px
 	margin-right: 3px
 	margin-left: 3px
+.resume__list
+	flex-direction: column
+	padding-left: 25px
+.resume__list li::before
+	content: '\2022'
+	display: inline-block
+	width: 1em
+	margin-left: -1em
+	font-weight: bold
+	color: $color-main
 
 // Section 6. Cert
+#cert .s__content
+	flex-direction: row
+	flex-wrap: wrap
+	justify-content: space-between
+#cert .s__block
+	flex-basis: calc(50% - $gutter-05)
+	max-width: 320px
+#cert .s__block:not(:last-child)
+	margin-bottom: 0
+#cert .s__block:first-child
+	margin-bottom: $gutter-15
 .cert__img
 	margin-bottom: $gutter-05
 .cert__body
 	flex-direction: column
 .cert__header
-	color: $color-main
+	font-weight: 400
+	font-size: .75em
+	line-height: 1.5em
+	text-transform: unset
+	color: $color-white
 	margin-bottom: $gutter-05
+#cert	.s__link
+	justify-content: center
+	width: 100%
+	font-size: .75em
 
 // Section 7. Books
 .books__list
@@ -386,11 +423,12 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	flex-direction: column
 	align-items: center
-	flex-basis: 48%
+	flex-basis: calc(50% - $gutter-05)
 	margin-bottom: $gutter-05
 .books__item img
-	max-width: 200px
-	margin-bottom: $gutter-05
+	width: 100%
+	// max-width: 200px
+	// margin-bottom: $gutter-05
 	border-radius: 0 7px 7px 0
 	box-shadow: 0 0 10px rgba(0,0,0,0.6)
 .books__author, .books__descr
@@ -399,9 +437,11 @@ h1, h2, h3, h4, h5, h6
 // Section 8. Portfolio
 .card
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.6)
+	color: $color-white
 .card,
 .card__body
 	flex-direction: column
+	flex-grow: 1
 .card__head
 	justify-content: center
 	flex-shrink: 0
@@ -411,6 +451,18 @@ h1, h2, h3, h4, h5, h6
 	text-align: center
 .card__img
 	+transition(filter, transform)
+.card__descr
+	max-height: 200px
+	margin-bottom: $gutter-10
+	font-size: 0.85em
+	overflow: auto
+.card__descr > *:not(:last-child)
+	margin-bottom: $gutter-05
+.card__descr ul
+	padding-left: 15px
+.descr__title
+	font-size: 0.9em
+	line-height: 1.5em
 .overlay
 	position: absolute
 	flex-direction: column
@@ -428,6 +480,7 @@ h1, h2, h3, h4, h5, h6
 	+transition(background)
 .overlay__link:hover
 	background-color: $color-main
+	color: $color-white
 .overlay__date
 	color: #fff
 .overlay__top,
@@ -459,9 +512,9 @@ h1, h2, h3, h4, h5, h6
 
 .card__body
 	justify-content: space-between
-	min-height: 250px
+	height: 300px
 	padding: 1.25em
-	background-color: #000
+	background-color: #1f3239
 .card__descr
 	flex-direction: column
 	padding-bottom: 1em
