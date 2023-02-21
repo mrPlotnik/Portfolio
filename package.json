@@ -5,8 +5,8 @@
 	"author": "Plotnik",
 	"license": "ISC",
 	"scripts": {
-		"html": "gulp",
-		"build": "gulp libs_style && gulp svg_css && gulp ttf && gulp fonts && gulp style && gulp libs_js && gulp build_js && gulp rastr && gulp webp && gulp svg_sprite && gulp html && gulp php",
+		"serve": "gulp",
+		"build": "gulp style_libs && gulp ttf && gulp style && gulp js_libs && gulp img_rastr && gulp pug && gulp js_build",
 		"ftp": "gulp deploy",
 		"build-ftp": "npm run build && npm run ftp"
 	},
