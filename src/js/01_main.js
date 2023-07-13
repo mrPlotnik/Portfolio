@@ -43,15 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	burger();
 
-	// $(window).stellar();
+	$(window).stellar();
 
 	// Анимация
 	$(".header__logo").addClass("flipInY animated").css("animation-delay", "0.5s")	;
 	$(".burger").addClass("fadeIn animated").css("animation-delay", "1.5s");
+
 	$(".hero__link").addClass("fadeIn animated").css("animation-delay", "0.5s");
-	$(".hero__descr:first-child").addClass("fadeInDown animated").css("animation-delay", "1s");
-	$(".hero__descr:last-child").addClass("fadeInUp animated").css("animation-delay", "1s");
-	$(".hero__mouse-icon").addClass("fadeInUp animated").css("animation-delay", "2s");
+	$(".hero__descr--first").addClass("fadeInDown animated").css("animation-delay", "1s");
+	$(".hero__descr--last").addClass("fadeInUp animated").css("animation-delay", "1s");
+	$(".hero__mouse-icon").addClass("fadeInUp animated").css("animation-delay", "1.5s");
 
 	//-----------------------------------------------------
 	//Animate CSS + WayPoints javaScript Plugin

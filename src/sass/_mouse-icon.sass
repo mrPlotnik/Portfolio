@@ -1,3 +1,7 @@
+.hero__mouse-link
+	position: absolute
+	bottom: 0
+
 .hero__mouse-icon
 	display: inline-block
 	flex-shrink: 0
@@ -7,9 +11,9 @@
 	border-radius: 16px
 	opacity: .7
 	outline: 1px solid transparent
-	+transition(outline)
+	+transition(outline-color)
 	&:hover
-		outline: 2px solid $color-main
+		outline: 1px solid $color-main
 	.hero__wheel
 		animation-name: drop
 		animation-duration: 1s

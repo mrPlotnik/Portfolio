@@ -5,4 +5,4 @@ bower i
 <br>
 npm run serve/npm run build
 
-<!-- Сделать tasks.deploy  -->
+<!-- Сделать npm run build-ftp  -->
